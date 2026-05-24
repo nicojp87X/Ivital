@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>Bromatech · Slide 1 · Ivital Salud Integral</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg-from:   #F5F0E8;
+      --color-bg-to:     #EDE8DD;
+      --color-navy:      #1a365d;
+      --color-navy-mid:  #2a4a7f;
+      --color-accent:    #3a7ca5;
+      --color-white-80:  rgba(255, 255, 255, 0.80);
+      --color-white-50:  rgba(255, 255, 255, 0.50);
+      --color-border:    rgba(26, 54, 93, 0.10);
+      --size:            1080px;
+    }
+
+    html, body {
+      width:  var(--size);
+      height: var(--size);
+      overflow: hidden;
+    }
+
+    body {
+      background: linear-gradient(145deg, var(--color-bg-from) 0%, var(--color-bg-to) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, sans-serif;
+      color: var(--color-navy);
+      position: relative;
+    }
+
+    /* Texture de fondo sutil */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 20% 15%, rgba(255,255,255,0.45) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 80% 85%, rgba(255,255,255,0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Círculos decorativos de fondo */
+    .deco-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .deco-circle--1 {
+      width: 480px;
+      height: 480px;
+      top: -120px;
+      right: -100px;
+      background: radial-gradient(circle, rgba(255,255,255,0.22) 0%, transparent 70%);
+      border: 1px solid rgba(255,255,255,0.35);
+    }
+    .deco-circle--2 {
+      width: 320px;
+      height: 320px;
+      bottom: -80px;
+      left: -60px;
+      background: radial-gradient(circle, rgba(58,124,165,0.08) 0%, transparent 70%);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .deco-circle--3 {
+      width: 180px;
+      height: 180px;
+      bottom: 160px;
+      right: 80px;
+      background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 70%);
+      border: 1px solid rgba(255,255,255,0.30);
+    }
+
+    /* Contenido principal */
+    .slide {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 880px;
+      gap: 0;
+    }
+
+    /* Marca tienda */
+    .store-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-white-80);
+      border: 1px solid var(--color-border);
+      border-radius: 100px;
+      padding: 10px 28px;
+      margin-bottom: 56px;
+      backdrop-filter: blur(8px);
+    }
+    .store-badge__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+    .store-badge__text {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+    }
+
+    /* Emoji principal */
+    .hero-emoji {
+      font-size: 76px;
+      line-height: 1;
+      margin-bottom: 36px;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
+    }
+
+    /* Título */
+    .headline {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 86px;
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--color-navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+    }
+    .headline mark {
+      background: none;
+      color: var(--color-accent);
+    }
+
+    /* Separador decorativo */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      width: 100%;
+      justify-content: center;
+    }
+    .divider__line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(26,54,93,0.30));
+    }
+    .divider__line--right {
+      background: linear-gradient(90deg, rgba(26,54,93,0.30), transparent);
+    }
+    .divider__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+
+    /* Subtítulo / bajada */
+    .subtitle {
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--color-navy-mid);
+      max-width: 720px;
+      margin-bottom: 60px;
+      opacity: 0.85;
+    }
+
+    /* Card de marca italiana */
+    .brand-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--color-white-80);
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      padding: 22px 40px;
+      backdrop-filter: blur(12px);
+      margin-bottom: 52px;
+      box-shadow: 0 4px 24px rgba(26,54,93,0.06);
+    }
+    .brand-card__flag {
+      font-size: 28px;
+    }
+    .brand-card__text {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-navy-mid);
+      letter-spacing: 0.04em;
+    }
+    .brand-card__name {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-navy);
+    }
+
+    /* CTA desliza */
+    .cta-swipe {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .cta-swipe__arrow {
+      font-size: 22px;
+      animation: nudge 1.8s ease-in-out infinite;
+    }
+    @keyframes nudge {
+      0%, 100% { transform: translateX(0); }
+      50%       { transform: translateX(6px); }
+    }
+
+    /* Footer tagline */
+    .tagline {
+      position: absolute;
+      bottom: 52px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+      opacity: 0.35;
+      white-space: nowrap;
+    }
+
+    /* Número de slide */
+    .slide-number {
+      position: absolute;
+      top: 52px;
+      right: 60px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--color-navy);
+      opacity: 0.30;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deco-circle deco-circle--1"></div>
+  <div class="deco-circle deco-circle--2"></div>
+  <div class="deco-circle deco-circle--3"></div>
+
+  <span class="slide-number">01 / 03</span>
+
+  <main class="slide">
+
+    <div class="store-badge">
+      <span class="store-badge__dot"></span>
+      <span class="store-badge__text">Ivital Salud Integral</span>
+    </div>
+
+    <div class="hero-emoji" aria-hidden="true">🦠✨</div>
+
+    <h1 class="headline">¿Por qué<br><mark>Bromatech?</mark></h1>
+
+    <div class="divider" aria-hidden="true">
+      <span class="divider__line"></span>
+      <span class="divider__dot"></span>
+      <span class="divider__dot" style="opacity:0.4"></span>
+      <span class="divider__dot" style="opacity:0.2"></span>
+      <span class="divider__line divider__line--right"></span>
+    </div>
+
+    <p class="subtitle">
+      Los probióticos que recomiendan los profesionales<br>de la salud integrativa
+    </p>
+
+    <div class="brand-card">
+      <span class="brand-card__flag" aria-hidden="true">🇮🇹</span>
+      <div>
+        <div class="brand-card__text">Marca italiana líder en</div>
+        <div class="brand-card__name">Probióticos de Alta Calidad</div>
+      </div>
+    </div>
+
+    <p class="cta-swipe">
+      Desliza para saber más
+      <span class="cta-swipe__arrow" aria-hidden="true">→</span>
+    </p>
+
+  </main>
+
+  <footer class="tagline" aria-label="Tagline">CUÍDATE DESDE DENTRO</footer>
+
+</body>
+</html>

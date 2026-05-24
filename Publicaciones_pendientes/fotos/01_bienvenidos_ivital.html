@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>Ivital Salud Integral — Bienvenidos</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg-start:   #F5F0E8;
+      --color-bg-end:     #EDE8DD;
+      --color-navy:       #1a365d;
+      --color-navy-light: #2a4a7f;
+      --color-navy-pale:  rgba(26, 54, 93, 0.08);
+      --color-navy-mid:   rgba(26, 54, 93, 0.15);
+      --color-cream:      #F5F0E8;
+      --color-gold:       #b8935a;
+      --color-gold-light: rgba(184, 147, 90, 0.18);
+      --size: 1080px;
+    }
+
+    html, body {
+      width:  var(--size);
+      height: var(--size);
+      overflow: hidden;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, var(--color-bg-start) 0%, var(--color-bg-end) 100%);
+      position: relative;
+    }
+
+    /* ── Decoración de fondo ── */
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .bg-circle--top-left {
+      width: 520px;
+      height: 520px;
+      top: -160px;
+      left: -160px;
+      background: radial-gradient(circle, rgba(26,54,93,0.06) 0%, transparent 70%);
+    }
+    .bg-circle--bottom-right {
+      width: 600px;
+      height: 600px;
+      bottom: -200px;
+      right: -200px;
+      background: radial-gradient(circle, rgba(184,147,90,0.10) 0%, transparent 70%);
+    }
+    .bg-circle--center {
+      width: 700px;
+      height: 700px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 65%);
+    }
+
+    /* Líneas decorativas esquinas */
+    .corner {
+      position: absolute;
+      width: 72px;
+      height: 72px;
+      pointer-events: none;
+    }
+    .corner--tl { top: 44px; left: 44px; border-top: 2px solid var(--color-gold); border-left: 2px solid var(--color-gold); }
+    .corner--tr { top: 44px; right: 44px; border-top: 2px solid var(--color-gold); border-right: 2px solid var(--color-gold); }
+    .corner--bl { bottom: 44px; left: 44px; border-bottom: 2px solid var(--color-gold); border-left: 2px solid var(--color-gold); }
+    .corner--br { bottom: 44px; right: 44px; border-bottom: 2px solid var(--color-gold); border-right: 2px solid var(--color-gold); }
+
+    /* ── Layout principal ── */
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 900px;
+      height: 900px;
+      padding: 72px 80px 64px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    /* ── Zona superior: logo / marca ── */
+    .brand-zone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-navy-pale);
+      border: 1px solid var(--color-navy-mid);
+      border-radius: 999px;
+      padding: 10px 28px;
+      color: var(--color-navy);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── Zona central: contenido ── */
+    .content-zone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .emoji-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 36px;
+      margin-bottom: 36px;
+      line-height: 1;
+    }
+
+    .headline {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 56px;
+      line-height: 1.15;
+      color: var(--color-navy);
+      letter-spacing: -0.01em;
+      max-width: 740px;
+      margin-bottom: 32px;
+    }
+
+    .divider {
+      width: 56px;
+      height: 3px;
+      background: var(--color-gold);
+      border-radius: 99px;
+      margin-bottom: 32px;
+    }
+
+    .tagline-box {
+      background: var(--color-gold-light);
+      border: 1px solid rgba(184, 147, 90, 0.30);
+      border-radius: 16px;
+      padding: 18px 40px;
+      margin-bottom: 40px;
+    }
+
+    .tagline-text {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-style: italic;
+      font-size: 26px;
+      color: var(--color-navy);
+      letter-spacing: 0.01em;
+    }
+
+    .brand-name {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 38px;
+      font-weight: bold;
+      color: var(--color-navy);
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }
+
+    .brand-subtitle {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-navy);
+      opacity: 0.55;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* ── Zona inferior: CTA + info ── */
+    .bottom-zone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      width: 100%;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-navy);
+      color: var(--color-cream);
+      border-radius: 999px;
+      padding: 18px 48px;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      box-shadow: 0 8px 32px rgba(26, 54, 93, 0.22);
+    }
+
+    .cta-arrow {
+      font-size: 20px;
+      display: inline-block;
+    }
+
+    .location-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.60);
+      border: 1px solid rgba(26, 54, 93, 0.12);
+      border-radius: 999px;
+      padding: 10px 24px;
+      font-size: 14px;
+      color: var(--color-navy);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      backdrop-filter: blur(4px);
+    }
+
+    .location-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--color-gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── Tagline fija abajo ── */
+    .footer-tagline {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+      opacity: 0.30;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Decoración de fondo -->
+  <div class="bg-circle bg-circle--top-left" aria-hidden="true"></div>
+  <div class="bg-circle bg-circle--bottom-right" aria-hidden="true"></div>
+  <div class="bg-circle bg-circle--center" aria-hidden="true"></div>
+
+  <!-- Esquinas decorativas -->
+  <div class="corner corner--tl" aria-hidden="true"></div>
+  <div class="corner corner--tr" aria-hidden="true"></div>
+  <div class="corner corner--bl" aria-hidden="true"></div>
+  <div class="corner corner--br" aria-hidden="true"></div>
+
+  <!-- Contenido principal -->
+  <main class="card">
+
+    <!-- Marca superior -->
+    <div class="brand-zone">
+      <div class="brand-pill">
+        <span aria-hidden="true">🌿</span>
+        Herbolario &amp; Salud Natural
+      </div>
+    </div>
+
+    <!-- Contenido central -->
+    <div class="content-zone">
+      <div class="emoji-row" aria-hidden="true">
+        <span>🌿</span>
+        <span>✨</span>
+        <span>🌿</span>
+      </div>
+
+      <h1 class="headline">
+        Tu herbolario de confianza en Las Palmas
+      </h1>
+
+      <div class="divider" aria-hidden="true"></div>
+
+      <div class="tagline-box">
+        <p class="tagline-text">"Otra forma de Vida es posible"</p>
+      </div>
+
+      <p class="brand-name">Ivital Salud Integral</p>
+      <p class="brand-subtitle">Cuídate desde dentro</p>
+    </div>
+
+    <!-- Zona inferior -->
+    <div class="bottom-zone">
+      <div class="cta-button" role="note" aria-label="Desliza para conocernos">
+        Desliza para conocernos
+        <span class="cta-arrow" aria-hidden="true">→</span>
+      </div>
+
+      <div class="location-pill">
+        <div class="location-dot" aria-hidden="true"></div>
+        Calle Francisco Rodríguez 42, Las Palmas
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Tagline pie -->
+  <p class="footer-tagline" aria-hidden="true">Cuídate desde dentro</p>
+
+</body>
+</html>

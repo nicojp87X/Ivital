@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>Mieles Yogé – Slide 4 – CTA</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cream-light: #F5F0E8;
+      --cream-dark: #EDE8DD;
+      --navy: #1a365d;
+      --navy-light: #2a4a7f;
+      --gold: #C8922A;
+      --gold-light: #E8B84B;
+      --gold-pale: #FBF3E2;
+      --text-secondary: #4a5568;
+      --white: #ffffff;
+    }
+
+    html, body {
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+    }
+
+    body {
+      background: linear-gradient(145deg, var(--cream-light) 0%, var(--cream-dark) 100%);
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Fondo decorativo: gran arco dorado */
+    body::before {
+      content: '';
+      position: absolute;
+      bottom: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 900px;
+      border-radius: 50%;
+      border: 1px solid rgba(200, 146, 42, 0.12);
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: absolute;
+      bottom: -240px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1100px;
+      height: 1100px;
+      border-radius: 50%;
+      border: 1px solid rgba(200, 146, 42, 0.07);
+      pointer-events: none;
+    }
+
+    /* Fondo luminoso central */
+    .bg-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 680px;
+      height: 680px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(200, 146, 42, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Celdas de panal – esquina superior derecha */
+    .honeycomb-deco {
+      position: absolute;
+      top: 56px;
+      right: 64px;
+      display: grid;
+      grid-template-columns: repeat(5, 16px);
+      gap: 5px;
+      opacity: 0.15;
+    }
+    .honeycomb-deco span {
+      display: block;
+      width: 16px;
+      height: 16px;
+      background: var(--navy);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+    .honeycomb-deco span:nth-child(odd) {
+      transform: translateY(10px);
+    }
+
+    /* Celdas esquina inferior izquierda – doradas */
+    .honeycomb-deco-2 {
+      position: absolute;
+      bottom: 80px;
+      left: 64px;
+      display: grid;
+      grid-template-columns: repeat(4, 14px);
+      gap: 4px;
+      opacity: 0.2;
+    }
+    .honeycomb-deco-2 span {
+      display: block;
+      width: 14px;
+      height: 14px;
+      background: var(--gold);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+    .honeycomb-deco-2 span:nth-child(odd) {
+      transform: translateY(9px);
+    }
+
+    .slide {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      padding: 0 100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-eyebrow::before,
+    .brand-eyebrow::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.7;
+    }
+
+    h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 64px;
+      font-weight: bold;
+      color: var(--navy);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+
+    h2 span {
+      color: var(--gold);
+    }
+
+    .subtitle {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--text-secondary);
+      margin-bottom: 52px;
+      line-height: 1.5;
+    }
+
+    /* Tres tarjetas de variedades */
+    .varieties {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    .variety-card {
+      background: var(--white);
+      border: 1px solid rgba(26, 54, 93, 0.1);
+      border-radius: 16px;
+      padding: 20px 24px;
+      text-align: center;
+      width: 210px;
+      box-shadow: 0 2px 16px rgba(26, 54, 93, 0.06);
+    }
+
+    .variety-card-icon {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .variety-card-name {
+      font-family: Georgia, serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--navy);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .variety-card-sub {
+      font-size: 11px;
+      color: var(--text-secondary);
+      opacity: 0.7;
+      letter-spacing: 0.04em;
+    }
+
+    /* Dirección */
+    .address-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 44px;
+      opacity: 0.8;
+    }
+
+    .address-icon {
+      width: 28px;
+      height: 28px;
+      background: rgba(26, 54, 93, 0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    /* Botones CTA */
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 52px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 100px;
+      padding: 18px 36px;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      border: none;
+      line-height: 1;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+      box-shadow: 0 4px 20px rgba(26, 54, 93, 0.25);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--navy);
+      border: 1.5px solid rgba(26, 54, 93, 0.35);
+    }
+
+    .btn-icon {
+      font-size: 18px;
+    }
+
+    /* Tagline final */
+    .tagline-final {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--navy);
+      opacity: 0.45;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .tagline-final::before,
+    .tagline-final::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--navy);
+      opacity: 0.3;
+    }
+
+    /* Logo Ivital */
+    .logo-ivital {
+      position: absolute;
+      top: 56px;
+      left: 72px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .logo-ivital-main {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--navy);
+      letter-spacing: 0.04em;
+    }
+
+    .logo-ivital-sub {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      opacity: 0.6;
+    }
+
+    .logo-divider {
+      position: absolute;
+      top: 56px;
+      left: 72px;
+      width: 2px;
+      height: 44px;
+      background: var(--gold);
+      border-radius: 2px;
+      left: 68px;
+    }
+
+    .logo-wrapper {
+      position: absolute;
+      top: 48px;
+      left: 72px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-bar {
+      width: 3px;
+      height: 44px;
+      background: linear-gradient(180deg, var(--gold-light), var(--gold));
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <div class="honeycomb-deco" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="honeycomb-deco-2" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="logo-wrapper" aria-label="Ivital Salud Integral">
+    <div class="logo-bar" aria-hidden="true"></div>
+    <div class="logo-ivital">
+      <span class="logo-ivital-main">ivital</span>
+      <span class="logo-ivital-sub">Salud Integral</span>
+    </div>
+  </div>
+
+  <main class="slide">
+
+    <p class="brand-eyebrow">Yogé Remedios Ancestrales</p>
+
+    <h2>Pruébalas<br>en <span>ivital</span></h2>
+
+    <p class="subtitle">
+      Las tres variedades disponibles en nuestro espacio.<br>
+      Cada miel, una historia de bienestar.
+    </p>
+
+    <div class="varieties" role="list" aria-label="Variedades Yogé disponibles">
+      <div class="variety-card" role="listitem">
+        <span class="variety-card-icon" aria-hidden="true">🍯</span>
+        <p class="variety-card-name">Miel Dorada</p>
+        <p class="variety-card-sub">Golden Honey</p>
+      </div>
+      <div class="variety-card" role="listitem">
+        <span class="variety-card-icon" aria-hidden="true">🌺</span>
+        <p class="variety-card-name">Miel de Jamaica</p>
+        <p class="variety-card-sub">Hibiscus Honey</p>
+      </div>
+      <div class="variety-card" role="listitem">
+        <span class="variety-card-icon" aria-hidden="true">🌿</span>
+        <p class="variety-card-name">Miel Digestiva</p>
+        <p class="variety-card-sub">Digestive Honey</p>
+      </div>
+    </div>
+
+    <address class="address-block">
+      <span class="address-icon" aria-hidden="true">📍</span>
+      <span>C/ Francisco Rodríguez 42, Las Palmas de Gran Canaria</span>
+    </address>
+
+    <nav class="cta-buttons" aria-label="Formas de contacto">
+      <a class="btn btn-primary" href="#" role="button">
+        <span class="btn-icon" aria-hidden="true">💬</span>
+        Escríbeme por WhatsApp
+      </a>
+      <a class="btn btn-secondary" href="#" role="button">
+        Pásate por el espacio
+      </a>
+    </nav>
+
+    <p class="tagline-final">Cuídate desde dentro</p>
+
+  </main>
+
+</body>
+</html>

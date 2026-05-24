@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>Ivital Salud Integral – Slide 1</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg-start:   #F5F0E8;
+      --color-bg-end:     #EDE8DD;
+      --color-navy:       #1a365d;
+      --color-navy-light: #2a4a7f;
+      --color-accent:     #7a9e7e;
+      --color-accent-warm:#b07d5a;
+      --color-white-card: rgba(255,255,255,0.72);
+      --radius-lg: 24px;
+      --radius-sm: 12px;
+    }
+
+    html, body {
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(155deg, var(--color-bg-start) 0%, var(--color-bg-end) 100%);
+      color: var(--color-navy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 56px 72px;
+      position: relative;
+    }
+
+    /* ——— Decoración de fondo ——— */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 680px 480px at 15% 10%, rgba(122,158,126,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 520px 420px at 90% 85%, rgba(176,125,90,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Círculos decorativos */
+    .deco-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .deco-circle--1 {
+      width: 320px; height: 320px;
+      border: 1.5px solid rgba(26,54,93,0.07);
+      top: -80px; right: -80px;
+    }
+    .deco-circle--2 {
+      width: 180px; height: 180px;
+      border: 1.5px solid rgba(122,158,126,0.14);
+      bottom: 120px; left: -60px;
+    }
+    .deco-circle--3 {
+      width: 80px; height: 80px;
+      background: rgba(122,158,126,0.09);
+      bottom: 280px; right: 100px;
+    }
+
+    /* ——— Header ——— */
+    .header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-text {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      color: var(--color-navy);
+    }
+
+    .logo-text span {
+      color: var(--color-accent);
+    }
+
+    .tagline-top {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      opacity: 0.85;
+    }
+
+    /* ——— Bloque central ——— */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      width: 100%;
+    }
+
+    .icon-cluster {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-leaf {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* SVG hoja inline */
+    .icon-leaf svg {
+      width: 48px;
+      height: 48px;
+    }
+
+    .headline-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .headline-question {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 62px;
+      font-weight: bold;
+      line-height: 1.1;
+      color: var(--color-navy);
+      letter-spacing: -0.01em;
+    }
+
+    .headline-calm {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 38px;
+      font-weight: bold;
+      line-height: 1.2;
+      color: var(--color-accent-warm);
+      letter-spacing: 0.01em;
+    }
+
+    .card-center {
+      background: var(--color-white-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: var(--radius-lg);
+      padding: 28px 52px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 32px rgba(26,54,93,0.08);
+    }
+
+    .card-center p {
+      font-size: 22px;
+      line-height: 1.5;
+      color: var(--color-navy);
+      opacity: 0.88;
+    }
+
+    .card-center strong {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 26px;
+      color: var(--color-navy);
+    }
+
+    /* ——— Flecha desliza ——— */
+    .swipe-hint {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-navy);
+      opacity: 0.65;
+      letter-spacing: 0.06em;
+    }
+
+    .swipe-arrow {
+      display: inline-flex;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--color-navy);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .swipe-arrow svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ——— Footer ——— */
+    .footer {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tagline-bottom {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+      opacity: 0.45;
+    }
+
+    .slide-indicator {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-navy);
+      opacity: 0.2;
+    }
+
+    .dot--active {
+      width: 24px;
+      border-radius: 4px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Círculos decorativos -->
+  <div class="deco-circle deco-circle--1" aria-hidden="true"></div>
+  <div class="deco-circle deco-circle--2" aria-hidden="true"></div>
+  <div class="deco-circle deco-circle--3" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo-text">ivital <span>salud integral</span></div>
+    <p class="tagline-top">Herbolario &amp; Bienestar Natural</p>
+  </header>
+
+  <!-- Contenido central -->
+  <main class="main-content">
+
+    <!-- Icono decorativo -->
+    <div class="icon-cluster" aria-hidden="true">
+      <!-- Hoja SVG -->
+      <div class="icon-leaf">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 4C24 4 8 14 8 28C8 36.837 15.163 44 24 44C32.837 44 40 36.837 40 28C40 14 24 4 24 4Z" fill="rgba(122,158,126,0.22)" stroke="#7a9e7e" stroke-width="1.5"/>
+          <path d="M24 44V18" stroke="#7a9e7e" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M24 28L16 20" stroke="#7a9e7e" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+          <path d="M24 34L32 26" stroke="#7a9e7e" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+        </svg>
+      </div>
+      <!-- Flor SVG -->
+      <div class="icon-leaf">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="24" cy="24" r="6" fill="rgba(176,125,90,0.3)" stroke="#b07d5a" stroke-width="1.5"/>
+          <ellipse cx="24" cy="11" rx="5" ry="8" fill="rgba(176,125,90,0.15)" stroke="#b07d5a" stroke-width="1.2"/>
+          <ellipse cx="24" cy="37" rx="5" ry="8" fill="rgba(176,125,90,0.15)" stroke="#b07d5a" stroke-width="1.2"/>
+          <ellipse cx="11" cy="24" rx="8" ry="5" fill="rgba(176,125,90,0.15)" stroke="#b07d5a" stroke-width="1.2"/>
+          <ellipse cx="37" cy="24" rx="8" ry="5" fill="rgba(176,125,90,0.15)" stroke="#b07d5a" stroke-width="1.2"/>
+          <ellipse cx="14.929" cy="14.929" rx="5" ry="8" fill="rgba(176,125,90,0.10)" stroke="#b07d5a" stroke-width="1.2" transform="rotate(-45 14.929 14.929)"/>
+          <ellipse cx="33.071" cy="33.071" rx="5" ry="8" fill="rgba(176,125,90,0.10)" stroke="#b07d5a" stroke-width="1.2" transform="rotate(-45 33.071 33.071)"/>
+          <ellipse cx="33.071" cy="14.929" rx="5" ry="8" fill="rgba(176,125,90,0.10)" stroke="#b07d5a" stroke-width="1.2" transform="rotate(45 33.071 14.929)"/>
+          <ellipse cx="14.929" cy="33.071" rx="5" ry="8" fill="rgba(176,125,90,0.10)" stroke="#b07d5a" stroke-width="1.2" transform="rotate(45 14.929 33.071)"/>
+        </svg>
+      </div>
+      <!-- Luna SVG -->
+      <div class="icon-leaf">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M30 8C22.268 8 16 14.268 16 22C16 29.732 22.268 36 30 36C32.4 36 34.65 35.36 36.6 34.24C34.16 38.64 29.36 41.6 23.84 41.6C15.52 41.6 8.8 34.88 8.8 26.56C8.8 18.24 15.52 11.52 23.84 11.52C26.04 11.52 28.12 12 30 12.88V8Z" fill="rgba(26,54,93,0.12)" stroke="#1a365d" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Titular principal -->
+    <div class="headline-group">
+      <h1 class="headline-question">¿Estrés, ansiedad,<br>insomnio?</h1>
+      <p class="headline-calm">"Ponemos la vida con más calma"</p>
+    </div>
+
+    <!-- Tarjeta central -->
+    <div class="card-center">
+      <strong>Los adaptógenos pueden ayudarte</strong>
+      <p>Plantas y extractos que ayudan al cuerpo<br>a gestionar el estrés de forma natural.</p>
+    </div>
+
+    <!-- Swipe hint -->
+    <div class="swipe-hint" aria-label="Desliza para ver más">
+      <span>Desliza para descubrir tus aliados</span>
+      <span class="swipe-arrow" aria-hidden="true">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="tagline-bottom">Cuídate desde dentro</p>
+    <div class="slide-indicator" aria-label="Diapositiva 1 de 3">
+      <div class="dot dot--active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>Ivital — Protección solar natural · Slide 2</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg-start:   #F5F0E8;
+      --color-bg-end:     #EDE8DD;
+      --color-navy:       #1a365d;
+      --color-navy-light: #2a4a7f;
+      --color-navy-pale:  rgba(26, 54, 93, 0.08);
+      --color-navy-mid:   rgba(26, 54, 93, 0.15);
+      --color-cream:      #F5F0E8;
+      --color-gold:       #b8935a;
+      --color-gold-light: rgba(184, 147, 90, 0.18);
+      --color-sun:        #d4894a;
+      --color-ocean:      #2e6fa3;
+      --color-ocean-pale: rgba(46, 111, 163, 0.10);
+      --size: 1080px;
+    }
+
+    html, body {
+      width:  var(--size);
+      height: var(--size);
+      overflow: hidden;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, var(--color-bg-start) 0%, var(--color-bg-end) 100%);
+      position: relative;
+    }
+
+    /* ── Decoración de fondo ── */
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .bg-circle--top-right {
+      width: 480px;
+      height: 480px;
+      top: -160px;
+      right: -160px;
+      background: radial-gradient(circle, rgba(212, 137, 74, 0.09) 0%, transparent 68%);
+    }
+    .bg-circle--bottom-left {
+      width: 520px;
+      height: 520px;
+      bottom: -180px;
+      left: -180px;
+      background: radial-gradient(circle, rgba(46, 111, 163, 0.09) 0%, transparent 68%);
+    }
+    .bg-circle--center {
+      width: 680px;
+      height: 680px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.36) 0%, transparent 65%);
+    }
+
+    /* Esquinas decorativas */
+    .corner {
+      position: absolute;
+      width: 72px;
+      height: 72px;
+      pointer-events: none;
+    }
+    .corner--tl { top: 44px; left: 44px; border-top: 2px solid var(--color-gold); border-left: 2px solid var(--color-gold); }
+    .corner--tr { top: 44px; right: 44px; border-top: 2px solid var(--color-gold); border-right: 2px solid var(--color-gold); }
+    .corner--bl { bottom: 44px; left: 44px; border-bottom: 2px solid var(--color-gold); border-left: 2px solid var(--color-gold); }
+    .corner--br { bottom: 44px; right: 44px; border-bottom: 2px solid var(--color-gold); border-right: 2px solid var(--color-gold); }
+
+    /* ── Layout principal ── */
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 920px;
+      height: 920px;
+      padding: 64px 72px 56px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    /* ── Zona superior: marca + pregunta ── */
+    .top-zone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-navy-pale);
+      border: 1px solid var(--color-navy-mid);
+      border-radius: 999px;
+      padding: 10px 28px;
+      color: var(--color-navy);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .question-headline {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 42px;
+      line-height: 1.18;
+      color: var(--color-navy);
+      letter-spacing: -0.01em;
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--color-gold);
+      border-radius: 99px;
+    }
+
+    /* ── Rejilla de beneficios ── */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      width: 100%;
+      flex: 1;
+      align-content: center;
+    }
+
+    .benefit-card {
+      background: rgba(255, 255, 255, 0.70);
+      border: 1.5px solid rgba(26, 54, 93, 0.10);
+      border-radius: 20px;
+      padding: 24px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      text-align: left;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 3px 14px rgba(26, 54, 93, 0.07);
+    }
+
+    .benefit-card__icon {
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .benefit-card__text {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--color-navy);
+      line-height: 1.35;
+      letter-spacing: -0.005em;
+    }
+
+    /* Variante: destacado con borde dorado */
+    .benefit-card--spf {
+      border-color: rgba(184, 147, 90, 0.35);
+      background: var(--color-gold-light);
+    }
+
+    /* Variante: océano */
+    .benefit-card--ocean {
+      border-color: rgba(46, 111, 163, 0.22);
+      background: var(--color-ocean-pale);
+    }
+
+    /* ── Zona inferior: CTA ── */
+    .bottom-zone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      width: 100%;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .cta-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-navy);
+      color: var(--color-cream);
+      border-radius: 999px;
+      padding: 18px 44px;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      box-shadow: 0 8px 32px rgba(26, 54, 93, 0.24);
+    }
+
+    .cta-main__store {
+      font-weight: 800;
+      opacity: 0.90;
+    }
+
+    .tagline-box {
+      background: var(--color-gold-light);
+      border: 1px solid rgba(184, 147, 90, 0.30);
+      border-radius: 14px;
+      padding: 14px 40px;
+    }
+
+    .tagline-text {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--color-navy);
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Tagline pie ── */
+    .footer-tagline {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+      opacity: 0.28;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Decoración de fondo -->
+  <div class="bg-circle bg-circle--top-right"   aria-hidden="true"></div>
+  <div class="bg-circle bg-circle--bottom-left" aria-hidden="true"></div>
+  <div class="bg-circle bg-circle--center"      aria-hidden="true"></div>
+
+  <!-- Esquinas decorativas -->
+  <div class="corner corner--tl" aria-hidden="true"></div>
+  <div class="corner corner--tr" aria-hidden="true"></div>
+  <div class="corner corner--bl" aria-hidden="true"></div>
+  <div class="corner corner--br" aria-hidden="true"></div>
+
+  <!-- Contenido principal -->
+  <main class="card">
+
+    <!-- Zona superior -->
+    <header class="top-zone">
+      <div class="brand-pill">
+        <span aria-hidden="true">🌿</span>
+        Ivital Salud Integral
+      </div>
+
+      <h1 class="question-headline">
+        ¿Por qué elegir<br>un solar natural?
+      </h1>
+
+      <div class="divider" aria-hidden="true"></div>
+    </header>
+
+    <!-- Rejilla de beneficios -->
+    <section aria-label="Beneficios de los solares naturales" class="benefits-grid">
+
+      <article class="benefit-card">
+        <span class="benefit-card__icon" aria-hidden="true">🚫</span>
+        <p class="benefit-card__text">Sin filtros químicos que alteren tus hormonas</p>
+      </article>
+
+      <article class="benefit-card benefit-card--ocean">
+        <span class="benefit-card__icon" aria-hidden="true">🐠</span>
+        <p class="benefit-card__text">Respetuoso con los arrecifes de coral</p>
+      </article>
+
+      <article class="benefit-card benefit-card--spf">
+        <span class="benefit-card__icon" aria-hidden="true">☀️</span>
+        <p class="benefit-card__text">Protección real SPF30 y SPF50</p>
+      </article>
+
+      <article class="benefit-card">
+        <span class="benefit-card__icon" aria-hidden="true">🌿</span>
+        <p class="benefit-card__text">Certificación ecológica garantizada</p>
+      </article>
+
+    </section>
+
+    <!-- Zona inferior -->
+    <footer class="bottom-zone">
+
+      <div class="cta-row">
+        <div class="cta-main" role="note" aria-label="Encuéntralos en Ivital">
+          Encuéntralos en&nbsp;<span class="cta-main__store">ivital</span>
+          <span aria-hidden="true">🌿</span>
+        </div>
+      </div>
+
+      <div class="tagline-box">
+        <p class="tagline-text">"Cuídate desde dentro"</p>
+      </div>
+
+    </footer>
+
+  </main>
+
+  <!-- Tagline pie -->
+  <p class="footer-tagline" aria-hidden="true">Cuídate desde dentro</p>
+
+</body>
+</html>

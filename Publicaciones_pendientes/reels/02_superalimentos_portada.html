@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>Ivital Salud Integral – Portada Reel Superalimentos</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg-start:   #F5F0E8;
+      --color-bg-end:     #EDE8DD;
+      --color-navy:       #1a365d;
+      --color-navy-light: #2a4a7f;
+      --color-accent:     #8B6914;
+      --color-accent-soft:#C4A44A;
+      --color-text-muted: #5a6a7a;
+      --font-serif:       Georgia, 'Times New Roman', serif;
+      --font-sans:        'Helvetica Neue', Arial, sans-serif;
+    }
+
+    html, body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+    }
+
+    body {
+      background: linear-gradient(160deg, var(--color-bg-start) 0%, var(--color-bg-end) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 60px;
+      position: relative;
+      font-family: var(--font-serif);
+      color: var(--color-navy);
+    }
+
+    /* Textura sutil de fondo */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 15%, rgba(196, 164, 74, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(26, 54, 93, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Línea decorativa superior */
+    .top-bar {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-marca {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .logo-marca .nombre {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 0.22em;
+      color: var(--color-accent);
+      text-transform: uppercase;
+    }
+
+    .logo-marca .subtipo {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      letter-spacing: 0.35em;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .divisor-linea {
+      width: 60px;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, var(--color-accent-soft), transparent);
+      margin: 4px auto;
+    }
+
+    /* Zona central – contenido principal */
+    .contenido-central {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* Icono bebida / superalimento ilustrado en SVG inline */
+    .icono-bebida {
+      width: 140px;
+      height: 140px;
+      margin-bottom: 48px;
+      opacity: 0.92;
+    }
+
+    .etiqueta-superior {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      font-weight: 400;
+      margin-bottom: 28px;
+    }
+
+    .titulo-principal {
+      font-family: var(--font-serif);
+      font-size: 76px;
+      font-weight: bold;
+      line-height: 1.1;
+      color: var(--color-navy);
+      letter-spacing: -0.01em;
+      margin-bottom: 36px;
+      max-width: 860px;
+    }
+
+    .titulo-principal em {
+      font-style: normal;
+      color: var(--color-accent);
+    }
+
+    .subtitulo {
+      font-family: var(--font-serif);
+      font-size: 36px;
+      font-weight: normal;
+      font-style: italic;
+      color: var(--color-navy-light);
+      letter-spacing: 0.01em;
+      margin-bottom: 64px;
+      opacity: 0.85;
+    }
+
+    /* Botón play decorativo */
+    .play-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 0;
+    }
+
+    .play-circulo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid rgba(26, 54, 93, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .play-circulo::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      border: 1px solid rgba(26, 54, 93, 0.12);
+    }
+
+    .play-triangulo {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 13px 0 13px 22px;
+      border-color: transparent transparent transparent rgba(26, 54, 93, 0.45);
+      margin-left: 5px;
+    }
+
+    .play-texto {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      font-weight: 400;
+    }
+
+    /* Zona inferior */
+    .bottom-area {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .separador-ornamental {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .separador-ornamental .linea {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(139, 105, 20, 0.4));
+    }
+
+    .separador-ornamental .linea:last-child {
+      background: linear-gradient(90deg, rgba(139, 105, 20, 0.4), transparent);
+    }
+
+    .separador-ornamental .rombo {
+      width: 8px;
+      height: 8px;
+      background: var(--color-accent-soft);
+      transform: rotate(45deg);
+      opacity: 0.7;
+    }
+
+    .tagline {
+      font-family: var(--font-sans);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+      opacity: 0.75;
+    }
+
+    .instagram-handle {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      font-weight: 400;
+    }
+
+    /* Elementos decorativos de fondo */
+    .deco-circulo-grande {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      border: 1px solid rgba(139, 105, 20, 0.07);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -52%);
+      pointer-events: none;
+    }
+
+    .deco-circulo-grande::before {
+      content: '';
+      position: absolute;
+      inset: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(139, 105, 20, 0.05);
+    }
+
+    .deco-punto {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--color-accent-soft);
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .deco-punto-1 { width: 12px; height: 12px; top: 340px; left: 80px; }
+    .deco-punto-2 { width: 7px;  height: 7px;  top: 440px; left: 140px; }
+    .deco-punto-3 { width: 9px;  height: 9px;  top: 1500px; right: 90px; }
+    .deco-punto-4 { width: 5px;  height: 5px;  top: 1580px; right: 160px; }
+    .deco-punto-5 { width: 14px; height: 14px; top: 960px; right: 60px; opacity: 0.1; }
+  </style>
+</head>
+<body>
+
+  <!-- Decorativos de fondo -->
+  <div class="deco-circulo-grande" aria-hidden="true"></div>
+  <div class="deco-punto deco-punto-1" aria-hidden="true"></div>
+  <div class="deco-punto deco-punto-2" aria-hidden="true"></div>
+  <div class="deco-punto deco-punto-3" aria-hidden="true"></div>
+  <div class="deco-punto deco-punto-4" aria-hidden="true"></div>
+  <div class="deco-punto deco-punto-5" aria-hidden="true"></div>
+
+  <!-- Cabecera con marca -->
+  <header class="top-bar" role="banner">
+    <div class="logo-marca">
+      <span class="nombre">Ivital</span>
+      <div class="divisor-linea"></div>
+      <span class="subtipo">Salud Integral</span>
+    </div>
+  </header>
+
+  <!-- Contenido central -->
+  <main class="contenido-central">
+
+    <!-- Icono SVG inline: taza humeante estilizada -->
+    <svg class="icono-bebida" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Vapor / destellos -->
+      <path d="M48 28 Q44 18 48 10 Q52 2 48 -4" stroke="#C4A44A" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+      <path d="M70 24 Q66 14 70 6 Q74 -2 70 -8" stroke="#C4A44A" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+      <path d="M92 28 Q88 18 92 10 Q96 2 92 -4" stroke="#C4A44A" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+      <!-- Cuerpo taza -->
+      <rect x="22" y="42" width="96" height="72" rx="12" fill="rgba(26,54,93,0.08)" stroke="#1a365d" stroke-width="2.5"/>
+      <!-- Contenido interior (color cúrcuma) -->
+      <rect x="29" y="49" width="82" height="58" rx="8" fill="rgba(196,164,74,0.22)"/>
+      <!-- Estrella / destellos -->
+      <circle cx="70" cy="78" r="16" fill="rgba(196,164,74,0.18)" stroke="#C4A44A" stroke-width="1.5"/>
+      <path d="M70 65 L72.5 74 L82 74 L74.5 79.5 L77 89 L70 83.5 L63 89 L65.5 79.5 L58 74 L67.5 74 Z" fill="#C4A44A" opacity="0.7"/>
+      <!-- Asa taza -->
+      <path d="M118 55 Q140 55 140 78 Q140 101 118 101" stroke="#1a365d" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <!-- Base plato -->
+      <ellipse cx="70" cy="118" rx="60" ry="10" fill="rgba(26,54,93,0.06)" stroke="#1a365d" stroke-width="1.5"/>
+    </svg>
+
+    <p class="etiqueta-superior" aria-label="Categoría: superalimentos">Superalimentos</p>
+
+    <h1 class="titulo-principal">
+      Superalimentos<br>para tu <em>día a día</em>
+    </h1>
+
+    <p class="subtitulo">"Más que un café, un ritual"</p>
+
+    <!-- Icono play decorativo -->
+    <div class="play-wrap" aria-hidden="true">
+      <div class="play-circulo">
+        <div class="play-triangulo"></div>
+      </div>
+      <span class="play-texto">Ver reel</span>
+    </div>
+
+  </main>
+
+  <!-- Pie con tagline -->
+  <footer class="bottom-area" role="contentinfo">
+    <div class="separador-ornamental" aria-hidden="true">
+      <div class="linea"></div>
+      <div class="rombo"></div>
+      <div class="linea"></div>
+    </div>
+    <p class="tagline">Cuídate desde dentro</p>
+    <p class="instagram-handle">@ivitalsaludintegral</p>
+  </footer>
+
+</body>
+</html>

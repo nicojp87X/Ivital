@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>Bromatech · Slide 3 · Ivital Salud Integral</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg-from:  #F5F0E8;
+      --color-bg-to:    #EDE8DD;
+      --color-navy:     #1a365d;
+      --color-navy-mid: #2a4a7f;
+      --color-accent:   #3a7ca5;
+      --color-green:    #2d7d5a;
+      --color-white-80: rgba(255, 255, 255, 0.82);
+      --color-white-60: rgba(255, 255, 255, 0.60);
+      --color-border:   rgba(26, 54, 93, 0.10);
+      --size:           1080px;
+    }
+
+    html, body {
+      width:  var(--size);
+      height: var(--size);
+      overflow: hidden;
+    }
+
+    body {
+      background: linear-gradient(150deg, var(--color-bg-from) 0%, var(--color-bg-to) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, sans-serif;
+      color: var(--color-navy);
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255,255,255,0.50) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 50% 100%, rgba(255,255,255,0.25) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Círculos decorativos */
+    .deco {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .deco--1 {
+      width: 600px;
+      height: 600px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(255,255,255,0.40);
+    }
+    .deco--2 {
+      width: 800px;
+      height: 800px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(255,255,255,0.22);
+    }
+    .deco--3 {
+      width: 400px;
+      height: 400px;
+      top: -80px;
+      right: -80px;
+      background: radial-gradient(circle, rgba(255,255,255,0.28) 0%, transparent 70%);
+    }
+    .deco--4 {
+      width: 300px;
+      height: 300px;
+      bottom: -60px;
+      left: -40px;
+      background: radial-gradient(circle, rgba(58,124,165,0.07) 0%, transparent 70%);
+    }
+
+    /* Número de slide */
+    .slide-number {
+      position: absolute;
+      top: 52px;
+      right: 60px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--color-navy);
+      opacity: 0.30;
+    }
+
+    /* Marca tienda - esquina superior izquierda */
+    .store-mark {
+      position: absolute;
+      top: 52px;
+      left: 60px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+      opacity: 0.40;
+    }
+
+    /* Contenido */
+    .slide {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 860px;
+      gap: 0;
+    }
+
+    /* Emoji */
+    .hero-emoji {
+      font-size: 64px;
+      line-height: 1;
+      margin-bottom: 32px;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.07));
+    }
+
+    /* Título principal */
+    .headline {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1.08;
+      color: var(--color-navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+    .headline em {
+      font-style: normal;
+      color: var(--color-accent);
+    }
+
+    /* Subtítulo */
+    .subtitle {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--color-navy-mid);
+      max-width: 680px;
+      margin-bottom: 56px;
+      opacity: 0.80;
+    }
+    .subtitle strong {
+      font-weight: 700;
+      color: var(--color-navy);
+      opacity: 1;
+    }
+
+    /* Separador */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 56px;
+    }
+    .divider__line {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(26,54,93,0.25));
+    }
+    .divider__line--right {
+      background: linear-gradient(90deg, rgba(26,54,93,0.25), transparent);
+    }
+    .divider__icon {
+      font-size: 18px;
+    }
+
+    /* Botones CTA */
+    .cta-group {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border-radius: 100px;
+      padding: 24px 44px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      cursor: default;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn--whatsapp {
+      background: #25D366;
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(37,211,102,0.30), 0 2px 8px rgba(37,211,102,0.20);
+    }
+
+    .btn--visit {
+      background: var(--color-white-80);
+      color: var(--color-navy);
+      border: 1.5px solid var(--color-border);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(26,54,93,0.08);
+    }
+
+    .btn__icon {
+      font-size: 22px;
+    }
+
+    /* Info cards de contacto */
+    .info-strip {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 0;
+    }
+
+    .info-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-white-60);
+      border: 1px solid var(--color-border);
+      border-radius: 100px;
+      padding: 12px 24px;
+      backdrop-filter: blur(8px);
+    }
+    .info-card__icon {
+      font-size: 16px;
+    }
+    .info-card__text {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-navy);
+      opacity: 0.70;
+    }
+
+    /* Footer: tagline grande al fondo */
+    .footer-tagline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .footer-tagline__rule {
+      width: 40px;
+      height: 2px;
+      background: var(--color-accent);
+      border-radius: 2px;
+      margin-bottom: 4px;
+      opacity: 0.60;
+    }
+
+    .footer-tagline__text {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+      opacity: 0.40;
+    }
+
+    .footer-tagline__brand {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+      opacity: 0.25;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deco deco--1" aria-hidden="true"></div>
+  <div class="deco deco--2" aria-hidden="true"></div>
+  <div class="deco deco--3" aria-hidden="true"></div>
+  <div class="deco deco--4" aria-hidden="true"></div>
+
+  <span class="slide-number">03 / 03</span>
+  <span class="store-mark" aria-hidden="true">Ivital</span>
+
+  <main class="slide">
+
+    <div class="hero-emoji" aria-hidden="true">💚</div>
+
+    <h1 class="headline">Tu microbiota<br>merece <em>lo mejor</em></h1>
+
+    <p class="subtitle">
+      En <strong>ivital</strong> te asesoramos de forma personalizada<br>
+      para encontrar el probiótico que tu cuerpo necesita
+    </p>
+
+    <div class="divider" aria-hidden="true">
+      <span class="divider__line"></span>
+      <span class="divider__icon">🌿</span>
+      <span class="divider__line divider__line--right"></span>
+    </div>
+
+    <div class="cta-group">
+      <div class="btn btn--whatsapp" role="button" aria-label="Escríbenos por WhatsApp">
+        <span class="btn__icon" aria-hidden="true">💬</span>
+        Escríbenos
+      </div>
+      <div class="btn btn--visit" role="button" aria-label="Visítanos en tienda">
+        <span class="btn__icon" aria-hidden="true">📍</span>
+        Visítanos
+      </div>
+    </div>
+
+    <div class="info-strip">
+      <div class="info-card">
+        <span class="info-card__icon" aria-hidden="true">🕐</span>
+        <span class="info-card__text">Asesoramiento personalizado</span>
+      </div>
+      <div class="info-card">
+        <span class="info-card__icon" aria-hidden="true">🇮🇹</span>
+        <span class="info-card__text">Bromatech original</span>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer-tagline">
+    <div class="footer-tagline__rule" aria-hidden="true"></div>
+    <p class="footer-tagline__text">Cuídate desde dentro</p>
+    <p class="footer-tagline__brand">Ivital Salud Integral</p>
+  </footer>
+
+</body>
+</html>

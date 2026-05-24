@@ -1,0 +1,69 @@
+# Sistema operativo
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editores / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variables de entorno y credenciales
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+credentials.json
+service-account*.json
+
+# Builds y artefactos
+dist/
+build/
+out/
+.cache/
+
+# Logs
+*.log
+logs/
+
+# Playwright/Puppeteer artefactos de captura
+.playwright-mcp/
+playwright-report/
+test-results/
+
+# Datos sensibles
+pacientes/
+clientes_privado/
+*.patient.*
+*.client.*
+*_privado.*
+historial_*.pdf
+historial_*.docx
+
+# Backups y temporales
+*.bak
+*.backup
+*.tmp
+*.temp
+~$*
+
+# Zips de deploy
+ivital-web.zip
+deploy.zip

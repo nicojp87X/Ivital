@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>Micoterapia - Ivital Salud Integral - Slide 1</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg-start: #F5F0E8;
+      --color-bg-end: #EDE8DD;
+      --color-navy: #1a365d;
+      --color-navy-light: #2a4a7f;
+      --color-accent: #4a7c59;
+      --color-accent-warm: #8B6914;
+      --color-white-glass: rgba(255, 255, 255, 0.72);
+      --color-white-glass-border: rgba(255, 255, 255, 0.9);
+      --font-serif: Georgia, 'Times New Roman', serif;
+      --font-sans: system-ui, -apple-system, sans-serif;
+    }
+
+    html, body {
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+    }
+
+    body {
+      background: linear-gradient(145deg, var(--color-bg-start) 0%, var(--color-bg-end) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      font-family: var(--font-sans);
+    }
+
+    /* Decorative background circles */
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .bg-circle--1 {
+      width: 560px;
+      height: 560px;
+      background: radial-gradient(circle, rgba(74, 124, 89, 0.07) 0%, transparent 70%);
+      top: -120px;
+      right: -120px;
+    }
+
+    .bg-circle--2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(139, 105, 20, 0.06) 0%, transparent 70%);
+      bottom: -80px;
+      left: -80px;
+    }
+
+    .bg-circle--3 {
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(26, 54, 93, 0.05) 0%, transparent 70%);
+      top: 340px;
+      left: 60px;
+    }
+
+    /* Subtle grid texture */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(26,54,93,0.04) 1px, transparent 1px);
+      background-size: 36px 36px;
+      pointer-events: none;
+    }
+
+    /* Main content wrapper */
+    .slide {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 80px 100px;
+      gap: 0;
+    }
+
+    /* Brand header */
+    .brand {
+      position: absolute;
+      top: 52px;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .brand__line {
+      flex: 1;
+      max-width: 180px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(26,54,93,0.25));
+    }
+
+    .brand__line--right {
+      background: linear-gradient(to left, transparent, rgba(26,54,93,0.25));
+    }
+
+    .brand__name {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+      opacity: 0.6;
+    }
+
+    /* Mushroom emoji cluster */
+    .mushroom-cluster {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 36px;
+    }
+
+    .mushroom-icon {
+      font-size: 52px;
+      line-height: 1;
+      filter: drop-shadow(0 4px 12px rgba(74, 124, 89, 0.25));
+    }
+
+    .mushroom-icon--main {
+      font-size: 76px;
+    }
+
+    .sparkle {
+      font-size: 32px;
+      opacity: 0.8;
+    }
+
+    /* Main title */
+    .title-badge {
+      display: inline-block;
+      background: rgba(74, 124, 89, 0.1);
+      border: 1px solid rgba(74, 124, 89, 0.2);
+      border-radius: 40px;
+      padding: 6px 24px;
+      margin-bottom: 24px;
+    }
+
+    .title-badge span {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    .main-title {
+      font-family: var(--font-serif);
+      font-size: 102px;
+      font-weight: bold;
+      color: var(--color-navy);
+      line-height: 0.95;
+      text-align: center;
+      letter-spacing: -1px;
+      margin-bottom: 36px;
+    }
+
+    /* Card / subtitle block */
+    .subtitle-card {
+      background: var(--color-white-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--color-white-glass-border);
+      border-radius: 20px;
+      padding: 28px 52px;
+      text-align: center;
+      margin-bottom: 52px;
+      box-shadow: 0 4px 32px rgba(26, 54, 93, 0.06);
+    }
+
+    .subtitle {
+      font-family: var(--font-serif);
+      font-size: 27px;
+      font-weight: normal;
+      color: var(--color-navy);
+      line-height: 1.4;
+      font-style: italic;
+      opacity: 0.85;
+    }
+
+    /* Swipe hint */
+    .swipe-hint {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 36px;
+      background: var(--color-navy);
+      border-radius: 50px;
+      box-shadow: 0 8px 28px rgba(26, 54, 93, 0.22);
+    }
+
+    .swipe-hint__text {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+
+    .swipe-hint__arrow {
+      font-size: 20px;
+      color: rgba(255,255,255,0.85);
+      animation: slide-arrow 1.6s ease-in-out infinite;
+    }
+
+    @keyframes slide-arrow {
+      0%, 100% { transform: translateX(0); }
+      50%       { transform: translateX(6px); }
+    }
+
+    /* Footer tagline */
+    .tagline {
+      position: absolute;
+      bottom: 48px;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .tagline__dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      opacity: 0.6;
+    }
+
+    .tagline__text {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+      opacity: 0.45;
+    }
+
+    /* Slide indicator */
+    .slide-indicator {
+      position: absolute;
+      bottom: 48px;
+      right: 56px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(26,54,93,0.2);
+    }
+
+    .dot--active {
+      background: var(--color-navy);
+      width: 24px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-circle bg-circle--1"></div>
+  <div class="bg-circle bg-circle--2"></div>
+  <div class="bg-circle bg-circle--3"></div>
+
+  <div class="slide">
+    <div class="brand">
+      <div class="brand__line"></div>
+      <span class="brand__name">Ivital Salud Integral</span>
+      <div class="brand__line brand__line--right"></div>
+    </div>
+
+    <div class="mushroom-cluster">
+      <span class="sparkle" aria-hidden="true">&#10024;</span>
+      <span class="mushroom-icon mushroom-icon--main" aria-hidden="true">&#127812;</span>
+      <span class="sparkle" aria-hidden="true">&#10024;</span>
+    </div>
+
+    <div class="title-badge">
+      <span>Plantas &amp; Hongos Medicinales</span>
+    </div>
+
+    <h1 class="main-title">Micoterapia</h1>
+
+    <div class="subtitle-card">
+      <p class="subtitle">El poder ancestral de los&nbsp;hongos&nbsp;medicinales</p>
+    </div>
+
+    <div class="swipe-hint" role="note" aria-label="Desliza para descubrir">
+      <span class="swipe-hint__text">Desliza para descubrir</span>
+      <span class="swipe-hint__arrow" aria-hidden="true">&#8594;</span>
+    </div>
+
+    <div class="tagline" aria-label="Tagline: Cuídate desde dentro">
+      <div class="tagline__dot"></div>
+      <span class="tagline__text">Cu&#237;date desde dentro</span>
+      <div class="tagline__dot"></div>
+    </div>
+
+    <div class="slide-indicator" aria-label="Slide 1 de 3">
+      <div class="dot dot--active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+</body>
+</html>

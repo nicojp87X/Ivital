@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>Ivital Salud Integral – Slide 2</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg-start:   #F5F0E8;
+      --color-bg-end:     #EDE8DD;
+      --color-navy:       #1a365d;
+      --color-navy-light: #2a4a7f;
+      --color-accent:     #7a9e7e;
+      --color-accent-warm:#b07d5a;
+      --color-white-card: rgba(255,255,255,0.76);
+      --radius-lg: 24px;
+      --radius-card: 18px;
+    }
+
+    html, body {
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(155deg, var(--color-bg-start) 0%, var(--color-bg-end) 100%);
+      color: var(--color-navy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 48px 64px;
+      position: relative;
+    }
+
+    /* ——— Fondo decorativo ——— */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 600px 400px at 80% 5%, rgba(122,158,126,0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 500px 380px at 5% 90%, rgba(176,125,90,0.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .deco-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .deco-circle--1 {
+      width: 260px; height: 260px;
+      border: 1.5px solid rgba(26,54,93,0.06);
+      top: -60px; left: -60px;
+    }
+    .deco-circle--2 {
+      width: 140px; height: 140px;
+      border: 1.5px solid rgba(122,158,126,0.12);
+      bottom: 80px; right: -40px;
+    }
+
+    /* ——— Header ——— */
+    .header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-text {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 20px;
+      letter-spacing: 0.04em;
+    }
+    .logo-text span { color: var(--color-accent); }
+
+    .tagline-top {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      opacity: 0.85;
+    }
+
+    /* ——— Título sección ——— */
+    .section-header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    .section-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 46px;
+      font-weight: bold;
+      color: var(--color-navy);
+      line-height: 1.1;
+    }
+
+    .title-line {
+      width: 56px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-accent-warm));
+      border-radius: 2px;
+      margin-top: 4px;
+    }
+
+    /* ——— Grid de tarjetas ——— */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      align-content: center;
+    }
+
+    .product-card {
+      background: var(--color-white-card);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.65);
+      border-radius: var(--radius-card);
+      padding: 28px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 2px 20px rgba(26,54,93,0.07);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Franja de color lateral */
+    .product-card::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      border-radius: 18px 0 0 18px;
+    }
+
+    .card--ashwa::before  { background: linear-gradient(180deg, #7a9e7e, #5c8060); }
+    .card--relaxen::before{ background: linear-gradient(180deg, #9e8ec0, #7a6aaa); }
+    .card--psyfort::before{ background: linear-gradient(180deg, #b07d5a, #8a5e3c); }
+    .card--migra::before  { background: linear-gradient(180deg, #5a8eb0, #3a6a8a); }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .card--ashwa  .card-icon { background: rgba(122,158,126,0.15); }
+    .card--relaxen .card-icon{ background: rgba(158,142,192,0.15); }
+    .card--psyfort .card-icon{ background: rgba(176,125,90,0.15); }
+    .card--migra  .card-icon { background: rgba(90,142,176,0.15); }
+
+    .card-icon svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .card-header-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .card-name {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--color-navy);
+      line-height: 1.1;
+    }
+
+    .card-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .card--ashwa  .card-badge { background: rgba(122,158,126,0.18); color: #4a7a50; }
+    .card--relaxen .card-badge{ background: rgba(158,142,192,0.18); color: #6a5a9a; }
+    .card--psyfort .card-badge{ background: rgba(176,125,90,0.18); color: #8a5e3c; }
+    .card--migra  .card-badge { background: rgba(90,142,176,0.18); color: #2a5a7a; }
+
+    .card-desc {
+      font-size: 16.5px;
+      line-height: 1.55;
+      color: var(--color-navy);
+      opacity: 0.78;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: rgba(26,54,93,0.07);
+      color: var(--color-navy);
+      opacity: 0.8;
+    }
+
+    /* ——— Footer ——— */
+    .footer {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tagline-bottom {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+      opacity: 0.45;
+    }
+
+    .slide-indicator {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-navy);
+      opacity: 0.2;
+    }
+
+    .dot--active {
+      width: 24px;
+      border-radius: 4px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deco-circle deco-circle--1" aria-hidden="true"></div>
+  <div class="deco-circle deco-circle--2" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo-text">ivital <span>salud integral</span></div>
+    <p class="tagline-top">Herbolario &amp; Bienestar Natural</p>
+  </header>
+
+  <!-- Título -->
+  <div class="section-header">
+    <p class="eyebrow">Nuestros productos recomendados</p>
+    <h1 class="section-title">Tus aliados naturales</h1>
+    <div class="title-line" aria-hidden="true"></div>
+  </div>
+
+  <!-- Grid productos -->
+  <section class="cards-grid" aria-label="Productos para la calma y el sistema nervioso">
+
+    <!-- Ashwagandha -->
+    <article class="product-card card--ashwa">
+      <div class="card-header-row">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 2C13 2 5 8 5 15C5 19.418 8.582 23 13 23C17.418 23 21 19.418 21 15C21 8 13 2 13 2Z" fill="rgba(122,158,126,0.3)" stroke="#5c8060" stroke-width="1.2"/>
+            <path d="M13 23V11" stroke="#5c8060" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M13 16L9 12" stroke="#5c8060" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+            <path d="M13 19L17 15" stroke="#5c8060" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+          </svg>
+        </div>
+        <h2 class="card-name">Ashwagandha</h2>
+        <span class="card-badge">Adaptógeno</span>
+      </div>
+      <p class="card-desc">Reduce el cortisol y la fatiga crónica. Mejora la calidad del sueño y los niveles de energía.</p>
+      <div class="card-tags">
+        <span class="tag">AshwaMega</span>
+        <span class="tag">Ashwagandha Forte</span>
+        <span class="tag">Physalis</span>
+      </div>
+    </article>
+
+    <!-- Relaxen -->
+    <article class="product-card card--relaxen">
+      <div class="card-header-row">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="13" cy="13" r="5" fill="rgba(158,142,192,0.3)" stroke="#7a6aaa" stroke-width="1.2"/>
+            <ellipse cx="13" cy="5" rx="3.5" ry="5" fill="rgba(158,142,192,0.2)" stroke="#7a6aaa" stroke-width="1"/>
+            <ellipse cx="13" cy="21" rx="3.5" ry="5" fill="rgba(158,142,192,0.2)" stroke="#7a6aaa" stroke-width="1"/>
+            <ellipse cx="5" cy="13" rx="5" ry="3.5" fill="rgba(158,142,192,0.2)" stroke="#7a6aaa" stroke-width="1"/>
+            <ellipse cx="21" cy="13" rx="5" ry="3.5" fill="rgba(158,142,192,0.2)" stroke="#7a6aaa" stroke-width="1"/>
+          </svg>
+        </div>
+        <h2 class="card-name">Relaxen</h2>
+        <span class="card-badge">Relajante</span>
+      </div>
+      <p class="card-desc">Fórmula sinérgica de Pasiflora, Valeriana y Lúpulo para favorecer la relajación y el descanso.</p>
+      <div class="card-tags">
+        <span class="tag">Pasiflora</span>
+        <span class="tag">Valeriana</span>
+        <span class="tag">Lúpulo</span>
+      </div>
+    </article>
+
+    <!-- Psyfort -->
+    <article class="product-card card--psyfort">
+      <div class="card-header-row">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 4C13 4 8 7 8 13C8 16.314 10.686 19 14 19C15.6 19 17.054 18.37 18.134 17.34" stroke="#8a5e3c" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M18 10C18 10 21 12 21 16C21 18.761 18.761 21 16 21C14.64 21 13.41 20.445 12.516 19.551" stroke="#8a5e3c" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="13" cy="13" r="3" fill="rgba(176,125,90,0.3)" stroke="#8a5e3c" stroke-width="1.2"/>
+            <path d="M13 4V6M13 20V22M4 13H6M20 13H22" stroke="#8a5e3c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          </svg>
+        </div>
+        <h2 class="card-name">Psyfort</h2>
+        <span class="card-badge">Sistema Nervioso</span>
+      </div>
+      <p class="card-desc">Formulado para dar apoyo integral al sistema nervioso en momentos de alta exigencia mental y emocional.</p>
+      <div class="card-tags">
+        <span class="tag">Sistema nervioso</span>
+        <span class="tag">Equilibrio mental</span>
+      </div>
+    </article>
+
+    <!-- Migradim -->
+    <article class="product-card card--migra">
+      <div class="card-header-row">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 3C7.477 3 3 7.477 3 13C3 18.523 7.477 23 13 23C18.523 23 23 18.523 23 13C23 7.477 18.523 3 13 3Z" stroke="#3a6a8a" stroke-width="1.2"/>
+            <path d="M10 9C10 9 8 11 8 13C8 15.209 9.791 17 12 17" stroke="#3a6a8a" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M16 10L13.5 13.5H16L13 17" stroke="#3a6a8a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 class="card-name">Migradim</h2>
+        <span class="card-badge">Migrañas</span>
+      </div>
+      <p class="card-desc">Alivio natural de migrañas y cefaleas tensionales. Fórmula de acción específica.</p>
+      <div class="card-tags">
+        <span class="tag">Cefaleas</span>
+        <span class="tag">Alivio natural</span>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="tagline-bottom">Cuídate desde dentro</p>
+    <div class="slide-indicator" aria-label="Diapositiva 2 de 3">
+      <div class="dot"></div>
+      <div class="dot dot--active"></div>
+      <div class="dot"></div>
+    </div>
+  </footer>
+
+</body>
+</html>

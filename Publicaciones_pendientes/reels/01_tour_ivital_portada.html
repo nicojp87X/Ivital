@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, initial-scale=1.0">
+  <title>Portada Reel — Ivital Salud Integral</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg-top:    #F5F0E8;
+      --color-bg-bottom: #EDE8DD;
+      --color-navy:      #1a365d;
+      --color-navy-mid:  #2a4a7f;
+      --color-navy-lite: #3d6899;
+      --color-gold:      #b8973a;
+      --color-gold-lite: #d4b05a;
+      --color-cream:     #faf7f2;
+      --font-serif:      Georgia, 'Times New Roman', serif;
+      --font-sans:       'Helvetica Neue', Arial, sans-serif;
+    }
+
+    html, body {
+      width:  1080px;
+      height: 1920px;
+      overflow: hidden;
+    }
+
+    body {
+      background: linear-gradient(170deg, var(--color-bg-top) 0%, var(--color-bg-bottom) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      font-family: var(--font-sans);
+    }
+
+    /* ── Textura de fondo sutil ── */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 15%, rgba(184,151,58,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 85%, rgba(26,54,93,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* ── Líneas decorativas superiores ── */
+    .deco-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--color-navy) 0%, var(--color-navy-lite) 50%, var(--color-navy) 100%);
+    }
+
+    .deco-top-stripe {
+      position: absolute;
+      top: 8px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+      opacity: 0.7;
+    }
+
+    /* ── Líneas decorativas inferiores ── */
+    .deco-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--color-navy) 0%, var(--color-navy-lite) 50%, var(--color-navy) 100%);
+    }
+
+    .deco-bottom-stripe {
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+      opacity: 0.7;
+    }
+
+    /* ── Ornamentos de esquina ── */
+    .corner {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+    }
+    .corner--tl { top: 40px;  left: 40px;  }
+    .corner--tr { top: 40px;  right: 40px; transform: scaleX(-1); }
+    .corner--bl { bottom: 40px; left: 40px;  transform: scaleY(-1); }
+    .corner--br { bottom: 40px; right: 40px; transform: scale(-1); }
+
+    .corner svg {
+      width: 100%;
+      height: 100%;
+      opacity: 0.22;
+    }
+
+    /* ── Marco interior ── */
+    .inner-frame {
+      position: absolute;
+      inset: 80px;
+      border: 1px solid rgba(26,54,93,0.12);
+      pointer-events: none;
+    }
+
+    /* ── Contenido principal ── */
+    .content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0;
+      padding: 0 100px;
+      width: 100%;
+    }
+
+    /* ── Logo / marca pequeña ── */
+    .brand-badge {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 64px;
+    }
+
+    .brand-badge .line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-navy-lite));
+    }
+    .brand-badge .line--right {
+      background: linear-gradient(90deg, var(--color-navy-lite), transparent);
+    }
+
+    .brand-badge .dot-cluster {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .brand-badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-navy-lite);
+      opacity: 0.5;
+    }
+    .brand-badge .dot--main {
+      width: 9px;
+      height: 9px;
+      opacity: 0.8;
+      background: var(--color-gold);
+    }
+
+    /* ── Hoja decorativa ── */
+    .leaf-icon {
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+
+    .leaf-icon svg {
+      width: 64px;
+      height: 64px;
+    }
+
+    /* ── Etiqueta de categoría ── */
+    .category-label {
+      font-family: var(--font-sans);
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 28px;
+    }
+
+    /* ── Separador ornamental ── */
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      opacity: 0.45;
+    }
+    .ornament .bar {
+      width: 80px;
+      height: 1px;
+      background: var(--color-navy);
+    }
+    .ornament .diamond {
+      width: 8px;
+      height: 8px;
+      background: var(--color-navy);
+      transform: rotate(45deg);
+    }
+
+    /* ── Título principal ── */
+    .main-title {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 84px;
+      line-height: 1.1;
+      color: var(--color-navy);
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+
+    .main-title .highlight {
+      color: var(--color-navy-mid);
+      display: block;
+    }
+
+    /* ── Subtítulo ── */
+    .subtitle {
+      font-family: var(--font-serif);
+      font-size: 38px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--color-navy-lite);
+      margin-bottom: 72px;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Separador central ── */
+    .center-divider {
+      width: 380px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-navy), transparent);
+      margin-bottom: 56px;
+      opacity: 0.25;
+    }
+
+    /* ── Icono de play ── */
+    .play-container {
+      margin-bottom: 72px;
+      position: relative;
+    }
+
+    .play-ring {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 2px solid rgba(26,54,93,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .play-ring::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      border: 1px solid rgba(26,54,93,0.1);
+    }
+
+    .play-triangle {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 18px 0 18px 32px;
+      border-color: transparent transparent transparent var(--color-navy);
+      opacity: 0.35;
+      margin-left: 6px;
+    }
+
+    /* ── Localización ── */
+    .location {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 80px;
+    }
+
+    .location-pin {
+      width: 22px;
+      height: 22px;
+      opacity: 0.55;
+    }
+
+    .location-text {
+      font-family: var(--font-sans);
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--color-navy);
+      opacity: 0.7;
+    }
+
+    /* ── Tagline final ── */
+    .tagline-wrapper {
+      position: relative;
+      padding: 28px 56px;
+    }
+
+    .tagline-wrapper::before,
+    .tagline-wrapper::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(26,54,93,0.2), transparent);
+    }
+    .tagline-wrapper::before { top: 0; }
+    .tagline-wrapper::after  { bottom: 0; }
+
+    .tagline {
+      font-family: var(--font-sans);
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+      opacity: 0.65;
+    }
+
+    /* ── Handle de Instagram ── */
+    .instagram-handle {
+      position: absolute;
+      bottom: 120px;
+      right: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .instagram-handle svg {
+      width: 22px;
+      height: 22px;
+      opacity: 0.4;
+    }
+
+    .instagram-handle span {
+      font-family: var(--font-sans);
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--color-navy);
+      opacity: 0.45;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Bordes decorativos -->
+  <div class="deco-top"></div>
+  <div class="deco-top-stripe"></div>
+  <div class="deco-bottom"></div>
+  <div class="deco-bottom-stripe"></div>
+
+  <!-- Marco interior -->
+  <div class="inner-frame"></div>
+
+  <!-- Ornamentos de esquina -->
+  <div class="corner corner--tl">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 10 L10 50 Q10 10 50 10 Z" stroke="#1a365d" stroke-width="1.5" fill="none"/>
+      <path d="M20 20 L20 45 Q20 20 45 20 Z" stroke="#1a365d" stroke-width="0.8" fill="none"/>
+      <circle cx="10" cy="10" r="3" fill="#1a365d"/>
+    </svg>
+  </div>
+  <div class="corner corner--tr">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 10 L10 50 Q10 10 50 10 Z" stroke="#1a365d" stroke-width="1.5" fill="none"/>
+      <path d="M20 20 L20 45 Q20 20 45 20 Z" stroke="#1a365d" stroke-width="0.8" fill="none"/>
+      <circle cx="10" cy="10" r="3" fill="#1a365d"/>
+    </svg>
+  </div>
+  <div class="corner corner--bl">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 10 L10 50 Q10 10 50 10 Z" stroke="#1a365d" stroke-width="1.5" fill="none"/>
+      <path d="M20 20 L20 45 Q20 20 45 20 Z" stroke="#1a365d" stroke-width="0.8" fill="none"/>
+      <circle cx="10" cy="10" r="3" fill="#1a365d"/>
+    </svg>
+  </div>
+  <div class="corner corner--br">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 10 L10 50 Q10 10 50 10 Z" stroke="#1a365d" stroke-width="1.5" fill="none"/>
+      <path d="M20 20 L20 45 Q20 20 45 20 Z" stroke="#1a365d" stroke-width="0.8" fill="none"/>
+      <circle cx="10" cy="10" r="3" fill="#1a365d"/>
+    </svg>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="content">
+
+    <!-- Badge de marca -->
+    <div class="brand-badge">
+      <div class="line"></div>
+      <div class="dot-cluster">
+        <div class="dot"></div>
+        <div class="dot dot--main"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="line line--right"></div>
+    </div>
+
+    <!-- Icono hoja -->
+    <div class="leaf-icon">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Hoja izquierda -->
+        <path d="M32 54 C32 54 8 44 8 24 C8 24 18 16 32 20 C32 20 32 20 32 54Z"
+              fill="#1a365d" opacity="0.15"/>
+        <path d="M32 54 C32 54 8 44 8 24 C8 24 18 16 32 20"
+              stroke="#1a365d" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- Hoja derecha -->
+        <path d="M32 54 C32 54 56 44 56 24 C56 24 46 16 32 20 C32 20 32 20 32 54Z"
+              fill="#1a365d" opacity="0.15"/>
+        <path d="M32 54 C32 54 56 44 56 24 C56 24 46 16 32 20"
+              stroke="#1a365d" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- Tallo -->
+        <line x1="32" y1="54" x2="32" y2="10" stroke="#1a365d" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Nervaduras -->
+        <path d="M32 42 C24 38 20 32 20 26" stroke="#1a365d" stroke-width="0.8" fill="none" stroke-linecap="round" opacity="0.5"/>
+        <path d="M32 42 C40 38 44 32 44 26" stroke="#1a365d" stroke-width="0.8" fill="none" stroke-linecap="round" opacity="0.5"/>
+        <!-- Flor en la punta -->
+        <circle cx="32" cy="10" r="4" fill="#b8973a" opacity="0.7"/>
+        <circle cx="32" cy="10" r="2" fill="#b8973a" opacity="0.9"/>
+      </svg>
+    </div>
+
+    <!-- Etiqueta -->
+    <div class="category-label">Tour por la tienda</div>
+
+    <!-- Ornamento -->
+    <div class="ornament">
+      <div class="bar"></div>
+      <div class="diamond"></div>
+      <div class="bar"></div>
+    </div>
+
+    <!-- Título principal -->
+    <h1 class="main-title">
+      Conoce ivital
+      <span class="highlight">por dentro</span>
+    </h1>
+
+    <!-- Subtítulo -->
+    <p class="subtitle">Tu herbolario en Las Palmas</p>
+
+    <!-- Divisor -->
+    <div class="center-divider"></div>
+
+    <!-- Play -->
+    <div class="play-container">
+      <div class="play-ring">
+        <div class="play-triangle"></div>
+      </div>
+    </div>
+
+    <!-- Localización -->
+    <div class="location">
+      <svg class="location-pin" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+              stroke="#1a365d" stroke-width="1.5" fill="none"/>
+        <circle cx="12" cy="9" r="2.5" stroke="#1a365d" stroke-width="1.5" fill="none"/>
+      </svg>
+      <span class="location-text">Las Palmas de Gran Canaria</span>
+    </div>
+
+    <!-- Tagline -->
+    <div class="tagline-wrapper">
+      <div class="tagline">Cuídate desde dentro</div>
+    </div>
+
+  </div>
+
+  <!-- Handle Instagram -->
+  <div class="instagram-handle">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="#1a365d" stroke-width="1.5"/>
+      <circle cx="12" cy="12" r="4.5" stroke="#1a365d" stroke-width="1.5"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="#1a365d"/>
+    </svg>
+    <span>@ivital_salud_integral</span>
+  </div>
+
+</body>
+</html>

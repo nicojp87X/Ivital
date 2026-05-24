@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, initial-scale=1.0">
+  <title>Guión Reel — Ivital Salud Integral</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg:        #F5F0E8;
+      --color-bg-card:   #FDFAF5;
+      --color-navy:      #1a365d;
+      --color-navy-mid:  #2a4a7f;
+      --color-navy-lite: #3d6899;
+      --color-gold:      #b8973a;
+      --color-gold-lite: #d4b05a;
+      --color-muted:     #8a9bb5;
+      --color-border:    rgba(26,54,93,0.1);
+      --font-serif:      Georgia, 'Times New Roman', serif;
+      --font-sans:       'Helvetica Neue', Arial, sans-serif;
+      --font-mono:       'Courier New', Courier, monospace;
+    }
+
+    html, body {
+      width:  1080px;
+      min-height: 1920px;
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      background-image:
+        radial-gradient(circle at 15% 10%, rgba(184,151,58,0.05) 0%, transparent 45%),
+        radial-gradient(circle at 85% 90%, rgba(26,54,93,0.04) 0%, transparent 45%);
+      font-family: var(--font-sans);
+      padding: 60px 64px 80px;
+    }
+
+    /* ── Cabecera del documento ── */
+    .doc-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 48px;
+      margin-bottom: 52px;
+      border-bottom: 1px solid var(--color-border);
+      position: relative;
+    }
+
+    .doc-header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 2px;
+      background: var(--color-gold);
+      opacity: 0.6;
+    }
+
+    .doc-label {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 20px;
+    }
+
+    .doc-title {
+      font-family: var(--font-serif);
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--color-navy);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .doc-subtitle {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-style: italic;
+      color: var(--color-navy-lite);
+      margin-bottom: 32px;
+    }
+
+    .doc-meta {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+
+    .meta-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-navy);
+    }
+
+    /* ── Nota de audio ── */
+    .audio-note {
+      background: linear-gradient(135deg, rgba(26,54,93,0.04) 0%, rgba(184,151,58,0.06) 100%);
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-gold);
+      border-radius: 8px;
+      padding: 22px 28px;
+      margin-bottom: 52px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .audio-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      opacity: 0.6;
+    }
+
+    .audio-text {
+      flex: 1;
+    }
+
+    .audio-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+      margin-bottom: 4px;
+    }
+
+    .audio-text span {
+      font-size: 17px;
+      color: var(--color-navy-lite);
+    }
+
+    /* ── Grid de escenas ── */
+    .scenes-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* ── Tarjeta de escena ── */
+    .scene-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      box-shadow: 0 2px 12px rgba(26,54,93,0.05);
+    }
+
+    /* ── Panel izquierdo: número y tiempo ── */
+    .scene-panel {
+      background: var(--color-navy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scene-panel::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+      opacity: 0.5;
+    }
+
+    .scene-number {
+      font-family: var(--font-serif);
+      font-size: 52px;
+      font-weight: 700;
+      color: white;
+      line-height: 1;
+      opacity: 0.95;
+    }
+
+    .scene-number-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-top: -8px;
+    }
+
+    .scene-time-badge {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-gold-lite);
+      letter-spacing: 0.05em;
+    }
+
+    .scene-duration {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Panel derecho: contenido ── */
+    .scene-content {
+      padding: 32px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .scene-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .scene-description {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-navy);
+      line-height: 1.3;
+      flex: 1;
+    }
+
+    /* ── Overlay text badge ── */
+    .overlay-text {
+      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-mid) 100%);
+      color: white;
+      font-size: 17px;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 8px;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      box-shadow: 0 3px 10px rgba(26,54,93,0.2);
+      flex-shrink: 0;
+      align-self: flex-start;
+    }
+
+    /* Overlay especial para escena final */
+    .overlay-text--final {
+      background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-lite) 100%);
+    }
+
+    /* ── Instrucciones de cámara ── */
+    .camera-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .camera-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid;
+    }
+
+    .camera-tag--shot {
+      color: #2d6a4f;
+      background: rgba(45,106,79,0.08);
+      border-color: rgba(45,106,79,0.2);
+    }
+
+    .camera-tag--move {
+      color: #7b3a2e;
+      background: rgba(123,58,46,0.07);
+      border-color: rgba(123,58,46,0.18);
+    }
+
+    .camera-tag--focus {
+      color: #4a3a7a;
+      background: rgba(74,58,122,0.07);
+      border-color: rgba(74,58,122,0.18);
+    }
+
+    /* ── Notas ── */
+    .scene-notes {
+      font-size: 16px;
+      color: var(--color-navy-lite);
+      line-height: 1.5;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(26,54,93,0.12);
+    }
+
+    .scene-notes strong {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* ── Escena especial: final ── */
+    .scene-card--final .scene-panel {
+      background: linear-gradient(160deg, #2a4a7f 0%, #1a365d 100%);
+    }
+
+    .scene-card--final .scene-content {
+      background: linear-gradient(135deg, rgba(184,151,58,0.04) 0%, var(--color-bg-card) 100%);
+    }
+
+    /* ── Detalle de dirección ── */
+    .address-box {
+      background: rgba(26,54,93,0.04);
+      border: 1px solid rgba(26,54,93,0.1);
+      border-radius: 8px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .address-box svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      opacity: 0.5;
+    }
+
+    .address-box span {
+      font-size: 16px;
+      color: var(--color-navy);
+      font-weight: 500;
+    }
+
+    /* ── Pie de documento ── */
+    .doc-footer {
+      margin-top: 52px;
+      padding-top: 36px;
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer-brand strong {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      color: var(--color-navy);
+    }
+
+    .footer-brand span {
+      font-size: 14px;
+      color: var(--color-muted);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-timeline {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .timeline-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-navy);
+      opacity: 0.2;
+    }
+    .timeline-dot--active {
+      background: var(--color-gold);
+      opacity: 0.8;
+      width: 10px;
+      height: 10px;
+    }
+
+    .footer-total {
+      text-align: right;
+    }
+
+    .footer-total strong {
+      font-family: var(--font-mono);
+      font-size: 24px;
+      color: var(--color-navy);
+    }
+
+    .footer-total span {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Cabecera del documento -->
+  <header class="doc-header">
+    <div class="doc-label">Guión Visual · Reel de Instagram</div>
+    <h1 class="doc-title">Tour por Ivital</h1>
+    <p class="doc-subtitle">Conoce ivital por dentro</p>
+    <div class="doc-meta">
+      <div class="meta-item">
+        <span class="meta-label">Formato</span>
+        <span class="meta-value">Reel 9:16</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Duración total</span>
+        <span class="meta-value">22 seg.</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Escenas</span>
+        <span class="meta-value">7</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Voz</span>
+        <span class="meta-value">Sin voz</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Audio</span>
+        <span class="meta-value">Música acústica</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Nota de audio -->
+  <div class="audio-note">
+    <svg class="audio-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="20" r="18" stroke="#1a365d" stroke-width="1.5"/>
+      <path d="M14 14 L14 26 L26 20 Z" stroke="#1a365d" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+      <path d="M30 15 Q34 20 30 25" stroke="#b8973a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M33 12 Q39 20 33 28" stroke="#b8973a" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.5"/>
+    </svg>
+    <div class="audio-text">
+      <strong>Sugerencia de audio</strong>
+      <span>Música acústica cálida e instrumental — sin voz. Ritmo tranquilo que acompañe el paseo por la tienda.</span>
+    </div>
+  </div>
+
+  <!-- Escenas -->
+  <div class="scenes-grid">
+
+    <!-- ESCENA 1 -->
+    <article class="scene-card">
+      <div class="scene-panel">
+        <div class="scene-number">01</div>
+        <div class="scene-number-label">Escena</div>
+        <div class="scene-time-badge">0 – 3s</div>
+        <div class="scene-duration">3 segundos</div>
+      </div>
+      <div class="scene-content">
+        <div class="scene-header">
+          <h2 class="scene-description">Plano de la fachada con el cartel "Ivital Salud Integral | Herbolario"</h2>
+          <div class="overlay-text">"¿Ya conoces ivital?"</div>
+        </div>
+        <div class="camera-row">
+          <span class="camera-tag camera-tag--shot">Plano general</span>
+          <span class="camera-tag camera-tag--move">Estático o ligero zoom in</span>
+          <span class="camera-tag camera-tag--focus">Exterior · fachada</span>
+        </div>
+        <div class="scene-notes">
+          <strong>Nota de rodaje</strong>
+          Capturar el cartel completo con buena luz. Si es de día, mejor con luz natural. El texto overlay aparece centrado en la parte superior.
+        </div>
+      </div>
+    </article>
+
+    <!-- ESCENA 2 -->
+    <article class="scene-card">
+      <div class="scene-panel">
+        <div class="scene-number">02</div>
+        <div class="scene-number-label">Escena</div>
+        <div class="scene-time-badge">3 – 6s</div>
+        <div class="scene-duration">3 segundos</div>
+      </div>
+      <div class="scene-content">
+        <div class="scene-header">
+          <h2 class="scene-description">Entrada a la tienda, mesa central con "Otra forma de Vida es posible"</h2>
+          <div class="overlay-text">"Un espacio diferente"</div>
+        </div>
+        <div class="camera-row">
+          <span class="camera-tag camera-tag--shot">Plano medio · travelling</span>
+          <span class="camera-tag camera-tag--move">Avanzar hacia dentro</span>
+          <span class="camera-tag camera-tag--focus">Entrada · mesa central</span>
+        </div>
+        <div class="scene-notes">
+          <strong>Nota de rodaje</strong>
+          Empezar desde la puerta avanzando lentamente. Que se vea el cartel de la mesa. Transmite acogida y calma.
+        </div>
+      </div>
+    </article>
+
+    <!-- ESCENA 3 -->
+    <article class="scene-card">
+      <div class="scene-panel">
+        <div class="scene-number">03</div>
+        <div class="scene-number-label">Escena</div>
+        <div class="scene-time-badge">6 – 9s</div>
+        <div class="scene-duration">3 segundos</div>
+      </div>
+      <div class="scene-content">
+        <div class="scene-header">
+          <h2 class="scene-description">Paneo por estanterías de suplementos — adaptógenos, digestivo, hígado</h2>
+          <div class="overlay-text">"Suplementación natural"</div>
+        </div>
+        <div class="camera-row">
+          <span class="camera-tag camera-tag--shot">Plano detalle · paneo</span>
+          <span class="camera-tag camera-tag--move">Movimiento lateral suave</span>
+          <span class="camera-tag camera-tag--focus">Estanterías · botes</span>
+        </div>
+        <div class="scene-notes">
+          <strong>Nota de rodaje</strong>
+          Paneo lento de izquierda a derecha mostrando las familias de productos. Intentar que se lean algunas etiquetas. Luz cálida si es posible.
+        </div>
+      </div>
+    </article>
+
+    <!-- ESCENA 4 -->
+    <article class="scene-card">
+      <div class="scene-panel">
+        <div class="scene-number">04</div>
+        <div class="scene-number-label">Escena</div>
+        <div class="scene-time-badge">9 – 12s</div>
+        <div class="scene-duration">3 segundos</div>
+      </div>
+      <div class="scene-content">
+        <div class="scene-header">
+          <h2 class="scene-description">Close-up de probióticos Bromatech</h2>
+          <div class="overlay-text">"Probióticos de calidad"</div>
+        </div>
+        <div class="camera-row">
+          <span class="camera-tag camera-tag--shot">Close-up · macro</span>
+          <span class="camera-tag camera-tag--move">Rack focus o estático</span>
+          <span class="camera-tag camera-tag--focus">Producto · etiqueta</span>
+        </div>
+        <div class="scene-notes">
+          <strong>Nota de rodaje</strong>
+          Primer plano del packaging de Bromatech. Que se lea claramente la marca. Si hay varios productos, puede hacerse un pequeño desliz lateral entre ellos.
+        </div>
+      </div>
+    </article>
+
+    <!-- ESCENA 5 -->
+    <article class="scene-card">
+      <div class="scene-panel">
+        <div class="scene-number">05</div>
+        <div class="scene-number-label">Escena</div>
+        <div class="scene-time-badge">12 – 15s</div>
+        <div class="scene-duration">3 segundos</div>
+      </div>
+      <div class="scene-content">
+        <div class="scene-header">
+          <h2 class="scene-description">Zona de cosmética ecológica y superalimentos</h2>
+          <div class="overlay-text">"Cosmética eco + superalimentos"</div>
+        </div>
+        <div class="camera-row">
+          <span class="camera-tag camera-tag--shot">Plano medio · paneo</span>
+          <span class="camera-tag camera-tag--move">Movimiento lento horizontal</span>
+          <span class="camera-tag camera-tag--focus">Dos zonas diferenciadas</span>
+        </div>
+        <div class="scene-notes">
+          <strong>Nota de rodaje</strong>
+          Si la cosmética y los superalimentos están en zonas distintas, grabar un paneo que las conecte o hacer dos clips muy cortos unidos. Colores naturales y envases bonitos dan resultado.
+        </div>
+      </div>
+    </article>
+
+    <!-- ESCENA 6 -->
+    <article class="scene-card">
+      <div class="scene-panel">
+        <div class="scene-number">06</div>
+        <div class="scene-number-label">Escena</div>
+        <div class="scene-time-badge">15 – 18s</div>
+        <div class="scene-duration">3 segundos</div>
+      </div>
+      <div class="scene-content">
+        <div class="scene-header">
+          <h2 class="scene-description">Estantería de libros</h2>
+          <div class="overlay-text">"Conocimiento que transforma"</div>
+        </div>
+        <div class="camera-row">
+          <span class="camera-tag camera-tag--shot">Plano medio · tilt</span>
+          <span class="camera-tag camera-tag--move">Tilt up o paneo lateral</span>
+          <span class="camera-tag camera-tag--focus">Lomos de libros · títulos</span>
+        </div>
+        <div class="scene-notes">
+          <strong>Nota de rodaje</strong>
+          Mostrar la variedad de títulos. Si algún libro está abierto o destacado, puede incluirse en primer plano. El overlay en la parte inferior de la imagen.
+        </div>
+      </div>
+    </article>
+
+    <!-- ESCENA 7 (final) -->
+    <article class="scene-card scene-card--final">
+      <div class="scene-panel">
+        <div class="scene-number">07</div>
+        <div class="scene-number-label">Escena</div>
+        <div class="scene-time-badge">18 – 22s</div>
+        <div class="scene-duration">4 segundos</div>
+      </div>
+      <div class="scene-content">
+        <div class="scene-header">
+          <h2 class="scene-description">Dunia en el mostrador, sonriendo a cámara</h2>
+          <div class="overlay-text overlay-text--final">"Te esperamos"</div>
+        </div>
+        <div class="camera-row">
+          <span class="camera-tag camera-tag--shot">Plano medio · retrato</span>
+          <span class="camera-tag camera-tag--move">Estático · natural</span>
+          <span class="camera-tag camera-tag--focus">Persona · mostrador</span>
+        </div>
+        <div class="scene-notes">
+          <strong>Dirección para el overlay final</strong>
+          Mostrar "Te esperamos" en la parte central o superior, y debajo la dirección de la tienda. Tono cálido, cercano.
+        </div>
+        <div class="address-box">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                  stroke="#1a365d" stroke-width="1.5" fill="none"/>
+            <circle cx="12" cy="9" r="2.5" stroke="#1a365d" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span>Añadir dirección completa en el overlay · Las Palmas de Gran Canaria</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Pie de documento -->
+  <footer class="doc-footer">
+    <div class="footer-brand">
+      <strong>Ivital Salud Integral</strong>
+      <span>@ivital_salud_integral · Las Palmas</span>
+    </div>
+    <div class="footer-timeline">
+      <div class="timeline-dot timeline-dot--active"></div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-dot"></div>
+    </div>
+    <div class="footer-total">
+      <strong>00:22</strong>
+      <span>Duración total</span>
+    </div>
+  </footer>
+
+</body>
+</html>

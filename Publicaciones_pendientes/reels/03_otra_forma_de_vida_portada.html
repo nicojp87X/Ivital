@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>Ivital – Portada Reel "Otra forma de Vida es posible"</title>
+  <style>
+    /* ─── Reset mínimo ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── Variables de marca ───────────────────────────────────── */
+    :root {
+      --cream-start:  #F5F0E8;
+      --cream-end:    #EDE8DD;
+      --navy:         #1a365d;
+      --navy-light:   #2a4a7f;
+      --gold:         #C9A96E;
+      --gold-light:   #E8D5B0;
+      --white-soft:   rgba(255,255,255,0.72);
+
+      --font-serif:   Georgia, 'Times New Roman', serif;
+      --font-sans:    'Helvetica Neue', Arial, sans-serif;
+    }
+
+    /* ─── Canvas fijo 1080×1920 ────────────────────────────────── */
+    html, body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: var(--cream-start);
+    }
+
+    body {
+      font-family: var(--font-serif);
+      color: var(--navy);
+    }
+
+    /* ─── Fondo con gradiente y textura sutil ──────────────────── */
+    .bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 900px 700px at 50% 30%, rgba(255,255,255,0.55) 0%, transparent 70%),
+        linear-gradient(160deg, var(--cream-start) 0%, var(--cream-end) 60%, #E4DDD0 100%);
+    }
+
+    /* Textura de ruido muy sutil (SVG inline) */
+    .bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    /* ─── Líneas decorativas ───────────────────────────────────── */
+    .deco-line {
+      position: absolute;
+      background: var(--gold);
+      opacity: 0.35;
+    }
+    .deco-line--h {
+      width: 320px;
+      height: 1px;
+    }
+    .deco-line--top    { top: 148px; left: 50%; transform: translateX(-50%); }
+    .deco-line--bottom { bottom: 148px; left: 50%; transform: translateX(-50%); }
+
+    /* ─── Ornamento superior ───────────────────────────────────── */
+    .ornament-top {
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      white-space: nowrap;
+    }
+    .ornament-top svg {
+      opacity: 0.45;
+    }
+    .ornament-top span {
+      font-family: var(--font-sans);
+      font-size: 20px;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      color: var(--navy);
+      opacity: 0.55;
+      text-transform: uppercase;
+    }
+
+    /* ─── Layout principal ─────────────────────────────────────── */
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 180px 100px;
+      gap: 0;
+    }
+
+    /* ─── Eyebrow label ────────────────────────────────────────── */
+    .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      color: var(--navy);
+      opacity: 0.5;
+      text-transform: uppercase;
+      margin-bottom: 64px;
+    }
+
+    /* ─── Corazón decorativo ───────────────────────────────────── */
+    .heart-icon {
+      margin-bottom: 40px;
+      color: var(--navy);
+      opacity: 0.75;
+    }
+
+    /* ─── Título principal – tipografía manuscrita elegante ────── */
+    .headline {
+      font-family: Georgia, 'Palatino Linotype', Palatino, serif;
+      font-size: 96px;
+      font-weight: 700;
+      line-height: 1.08;
+      text-align: center;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+      /* Efecto caligráfico con italics */
+      font-style: italic;
+    }
+
+    /* Primera línea destacada */
+    .headline em {
+      font-style: italic;
+      display: block;
+      font-size: 112px;
+      color: var(--navy);
+    }
+
+    /* ─── Separador ornamental ─────────────────────────────────── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 52px 0;
+      width: 100%;
+      max-width: 600px;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      opacity: 0.7;
+    }
+    .divider-diamond {
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    /* ─── Subtítulo ────────────────────────────────────────────── */
+    .subtitle {
+      font-family: var(--font-sans);
+      font-size: 32px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--navy);
+      opacity: 0.75;
+      text-align: center;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    /* ─── Botón play ───────────────────────────────────────────── */
+    .play-container {
+      margin: 72px 0 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .play-btn {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow:
+        0 0 0 16px rgba(26, 54, 93, 0.08),
+        0 0 0 32px rgba(26, 54, 93, 0.04);
+    }
+
+    .play-btn::before {
+      content: '';
+      position: absolute;
+      inset: -16px;
+      border-radius: 50%;
+      border: 1px solid rgba(26, 54, 93, 0.18);
+    }
+
+    .play-btn::after {
+      content: '';
+      position: absolute;
+      inset: -32px;
+      border-radius: 50%;
+      border: 1px solid rgba(26, 54, 93, 0.08);
+    }
+
+    .play-btn svg {
+      margin-left: 6px; /* compensación óptica */
+    }
+
+    .play-label {
+      font-family: var(--font-sans);
+      font-size: 19px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--navy);
+      opacity: 0.5;
+      text-transform: uppercase;
+    }
+
+    /* ─── Tagline inferior ─────────────────────────────────────── */
+    .tagline-container {
+      position: absolute;
+      bottom: 130px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      white-space: nowrap;
+    }
+
+    .tagline {
+      font-family: var(--font-sans);
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: 0.38em;
+      color: var(--navy);
+      opacity: 0.6;
+      text-transform: uppercase;
+    }
+
+    /* ─── Logo Ivital en la parte inferior ─────────────────────── */
+    .brand-mark {
+      position: absolute;
+      bottom: 200px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--navy);
+      text-transform: uppercase;
+    }
+
+    .brand-tagline-below {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      color: var(--navy);
+      opacity: 0.5;
+      text-transform: uppercase;
+    }
+
+    /* ─── Borde decorativo del marco ───────────────────────────── */
+    .frame-border {
+      position: absolute;
+      inset: 40px;
+      border: 1px solid rgba(26, 54, 93, 0.1);
+      pointer-events: none;
+    }
+    .frame-border::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(26, 54, 93, 0.05);
+    }
+
+    /* Esquinas decorativas */
+    .corner {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      opacity: 0.3;
+    }
+    .corner--tl { top: 52px;  left: 52px;  border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+    .corner--tr { top: 52px;  right: 52px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+    .corner--bl { bottom: 52px; left: 52px;  border-bottom: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+    .corner--br { bottom: 52px; right: 52px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+  </style>
+</head>
+<body>
+
+  <!-- Fondo -->
+  <div class="bg" aria-hidden="true"></div>
+
+  <!-- Borde decorativo -->
+  <div class="frame-border" aria-hidden="true"></div>
+  <div class="corner corner--tl" aria-hidden="true"></div>
+  <div class="corner corner--tr" aria-hidden="true"></div>
+  <div class="corner corner--bl" aria-hidden="true"></div>
+  <div class="corner corner--br" aria-hidden="true"></div>
+
+  <!-- Líneas horizontales decorativas -->
+  <div class="deco-line deco-line--h deco-line--top"  aria-hidden="true"></div>
+  <div class="deco-line deco-line--h deco-line--bottom" aria-hidden="true"></div>
+
+  <!-- Contenido principal -->
+  <div class="wrapper">
+
+    <!-- Eyebrow -->
+    <p class="eyebrow">Ivital Salud Integral</p>
+
+    <!-- Icono corazón -->
+    <div class="heart-icon" aria-hidden="true">
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26 45C26 45 6 33 6 18.5C6 13.25 10.25 9 15.5 9C19.15 9 22.35 10.95 24.5 13.85L26 16L27.5 13.85C29.65 10.95 32.85 9 36.5 9C41.75 9 46 13.25 46 18.5C46 33 26 45 26 45Z" stroke="#1a365d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+    </div>
+
+    <!-- Título principal -->
+    <h1 class="headline">
+      <em>Otra forma</em>
+      de Vida<br>es posible
+    </h1>
+
+    <!-- Separador -->
+    <div class="divider" aria-hidden="true">
+      <div class="divider-diamond"></div>
+    </div>
+
+    <!-- Subtítulo -->
+    <p class="subtitle">La filosofía detrás de ivital</p>
+
+    <!-- Botón play -->
+    <div class="play-container">
+      <div class="play-btn" role="img" aria-label="Reproducir reel">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 10L28 18L13 26V10Z" fill="#F5F0E8"/>
+        </svg>
+      </div>
+      <span class="play-label">Ver reel</span>
+    </div>
+
+  </div>
+
+  <!-- Marca inferior -->
+  <footer class="brand-mark" aria-label="Marca Ivital">
+    <p class="brand-name">Ivital</p>
+    <p class="brand-tagline-below">Salud Integral</p>
+  </footer>
+
+  <!-- Tagline -->
+  <div class="tagline-container" aria-label="Tagline">
+    <p class="tagline">Cuídate desde dentro</p>
+  </div>
+
+</body>
+</html>

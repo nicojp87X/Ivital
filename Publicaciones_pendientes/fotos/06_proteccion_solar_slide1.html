@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>Ivital — Protección solar natural · Slide 1</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg-start:   #F5F0E8;
+      --color-bg-end:     #EDE8DD;
+      --color-navy:       #1a365d;
+      --color-navy-light: #2a4a7f;
+      --color-navy-pale:  rgba(26, 54, 93, 0.08);
+      --color-navy-mid:   rgba(26, 54, 93, 0.15);
+      --color-cream:      #F5F0E8;
+      --color-gold:       #b8935a;
+      --color-gold-light: rgba(184, 147, 90, 0.18);
+      --color-sun:        #d4894a;
+      --color-ocean:      #2e6fa3;
+      --color-ocean-pale: rgba(46, 111, 163, 0.10);
+      --size: 1080px;
+    }
+
+    html, body {
+      width:  var(--size);
+      height: var(--size);
+      overflow: hidden;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, var(--color-bg-start) 0%, var(--color-bg-end) 100%);
+      position: relative;
+    }
+
+    /* ── Decoración de fondo ── */
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .bg-circle--top-right {
+      width: 560px;
+      height: 560px;
+      top: -180px;
+      right: -180px;
+      background: radial-gradient(circle, rgba(212, 137, 74, 0.10) 0%, transparent 68%);
+    }
+    .bg-circle--bottom-left {
+      width: 580px;
+      height: 580px;
+      bottom: -200px;
+      left: -200px;
+      background: radial-gradient(circle, rgba(46, 111, 163, 0.10) 0%, transparent 68%);
+    }
+    .bg-circle--center {
+      width: 720px;
+      height: 720px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.38) 0%, transparent 65%);
+    }
+
+    /* Ondas decorativas horizontales (océano) */
+    .wave-bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 4px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, transparent 0%, var(--color-ocean) 30%, var(--color-ocean) 70%, transparent 100%);
+      opacity: 0.12;
+      pointer-events: none;
+    }
+    .wave-bar--1 { bottom: 110px; }
+    .wave-bar--2 { bottom: 100px; width: 80%; left: 10%; opacity: 0.08; }
+
+    /* Esquinas decorativas */
+    .corner {
+      position: absolute;
+      width: 72px;
+      height: 72px;
+      pointer-events: none;
+    }
+    .corner--tl { top: 44px; left: 44px; border-top: 2px solid var(--color-gold); border-left: 2px solid var(--color-gold); }
+    .corner--tr { top: 44px; right: 44px; border-top: 2px solid var(--color-gold); border-right: 2px solid var(--color-gold); }
+    .corner--bl { bottom: 44px; left: 44px; border-bottom: 2px solid var(--color-gold); border-left: 2px solid var(--color-gold); }
+    .corner--br { bottom: 44px; right: 44px; border-bottom: 2px solid var(--color-gold); border-right: 2px solid var(--color-gold); }
+
+    /* ── Layout principal ── */
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 900px;
+      height: 900px;
+      padding: 72px 80px 60px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    /* ── Zona superior: marca ── */
+    .brand-zone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-navy-pale);
+      border: 1px solid var(--color-navy-mid);
+      border-radius: 999px;
+      padding: 10px 28px;
+      color: var(--color-navy);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── Zona central ── */
+    .content-zone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .emoji-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 52px;
+      margin-bottom: 32px;
+      line-height: 1;
+    }
+
+    .headline {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 66px;
+      line-height: 1.12;
+      color: var(--color-navy);
+      letter-spacing: -0.015em;
+      max-width: 760px;
+      margin-bottom: 12px;
+    }
+
+    .headline mark {
+      background: none;
+      color: var(--color-sun);
+    }
+
+    .divider {
+      width: 56px;
+      height: 3px;
+      background: var(--color-gold);
+      border-radius: 99px;
+      margin: 28px 0;
+    }
+
+    .subheadline {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 30px;
+      font-style: italic;
+      color: var(--color-navy);
+      opacity: 0.80;
+      letter-spacing: 0.01em;
+      margin-bottom: 36px;
+    }
+
+    /* Badge de marca proveedor */
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: white;
+      border: 1.5px solid rgba(26, 54, 93, 0.14);
+      border-radius: 16px;
+      padding: 16px 36px;
+      box-shadow: 0 4px 18px rgba(26, 54, 93, 0.08);
+    }
+
+    .brand-badge__icon {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .brand-badge__text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+
+    .brand-badge__label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+      opacity: 0.50;
+    }
+
+    .brand-badge__name {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--color-navy);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Zona inferior: CTA ── */
+    .bottom-zone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .swipe-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--color-navy);
+      color: var(--color-cream);
+      border-radius: 999px;
+      padding: 18px 52px;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      box-shadow: 0 8px 32px rgba(26, 54, 93, 0.24);
+    }
+
+    .swipe-cta__arrow {
+      font-size: 22px;
+      display: inline-block;
+    }
+
+    .eco-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-ocean-pale);
+      border: 1px solid rgba(46, 111, 163, 0.20);
+      border-radius: 999px;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-ocean);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── Tagline pie ── */
+    .footer-tagline {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: var(--color-navy);
+      opacity: 0.28;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Decoración de fondo -->
+  <div class="bg-circle bg-circle--top-right"   aria-hidden="true"></div>
+  <div class="bg-circle bg-circle--bottom-left" aria-hidden="true"></div>
+  <div class="bg-circle bg-circle--center"      aria-hidden="true"></div>
+  <div class="wave-bar wave-bar--1" aria-hidden="true"></div>
+  <div class="wave-bar wave-bar--2" aria-hidden="true"></div>
+
+  <!-- Esquinas decorativas -->
+  <div class="corner corner--tl" aria-hidden="true"></div>
+  <div class="corner corner--tr" aria-hidden="true"></div>
+  <div class="corner corner--bl" aria-hidden="true"></div>
+  <div class="corner corner--br" aria-hidden="true"></div>
+
+  <!-- Contenido principal -->
+  <main class="card">
+
+    <!-- Marca superior -->
+    <header class="brand-zone">
+      <div class="brand-pill">
+        <span aria-hidden="true">🌿</span>
+        Ivital Salud Integral
+      </div>
+    </header>
+
+    <!-- Contenido central -->
+    <div class="content-zone">
+
+      <div class="emoji-row" aria-hidden="true">
+        <span>☀️</span>
+        <span>🌊</span>
+      </div>
+
+      <h1 class="headline">
+        Protección solar<br>
+        <mark>SIN tóxicos</mark>
+      </h1>
+
+      <div class="divider" aria-hidden="true"></div>
+
+      <p class="subheadline">
+        Protege tu piel<br>y el océano
+      </p>
+
+      <div class="brand-badge" role="note" aria-label="Marca: Laboratoires de Biarritz">
+        <span class="brand-badge__icon" aria-hidden="true">🌿</span>
+        <div class="brand-badge__text">
+          <span class="brand-badge__label">Solar ecológico · certificado</span>
+          <span class="brand-badge__name">Laboratoires de Biarritz</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Zona inferior -->
+    <footer class="bottom-zone">
+      <div class="swipe-cta" role="note" aria-label="Desliza para ver más">
+        Desliza para saber más
+        <span class="swipe-cta__arrow" aria-hidden="true">→</span>
+      </div>
+      <div class="eco-pill">
+        <span aria-hidden="true">🐠</span>
+        Reef-safe · Bio · Ecológico
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Tagline pie -->
+  <p class="footer-tagline" aria-hidden="true">Cuídate desde dentro</p>
+
+</body>
+</html>

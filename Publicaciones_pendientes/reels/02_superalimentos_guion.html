@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>Ivital – Guión Storyboard: Superalimentos</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg:         #F5F0E8;
+      --color-bg-card:    #FDFAF5;
+      --color-navy:       #1a365d;
+      --color-navy-light: #2a4a7f;
+      --color-accent:     #8B6914;
+      --color-accent-soft:#C4A44A;
+      --color-muted:      #6b7a8d;
+      --color-border:     rgba(139, 105, 20, 0.18);
+      --color-badge-bg:   #1a365d;
+      --color-badge-text: #F5F0E8;
+      --font-serif:       Georgia, 'Times New Roman', serif;
+      --font-sans:        'Helvetica Neue', Arial, sans-serif;
+      --radius-card:      16px;
+    }
+
+    html, body {
+      width: 1080px;
+      min-height: 1920px;
+      background: var(--color-bg);
+      color: var(--color-navy);
+      font-family: var(--font-sans);
+    }
+
+    body {
+      padding: 60px 60px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* -------- CABECERA -------- */
+    .doc-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 40px;
+      border-bottom: 1.5px solid var(--color-border);
+      margin-bottom: 44px;
+      text-align: center;
+    }
+
+    .doc-header .marca {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    .doc-header h1 {
+      font-family: var(--font-serif);
+      font-size: 42px;
+      font-weight: bold;
+      color: var(--color-navy);
+      line-height: 1.15;
+    }
+
+    .doc-header .meta {
+      font-size: 14px;
+      color: var(--color-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .doc-header .meta span {
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    /* -------- SPECS TÉCNICAS -------- */
+    .specs-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 44px;
+      flex-wrap: wrap;
+    }
+
+    .spec-chip {
+      background: var(--color-navy);
+      color: #F5F0E8;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+    }
+
+    .spec-chip strong {
+      color: var(--color-accent-soft);
+    }
+
+    /* -------- GRID DE ESCENAS -------- */
+    .escenas-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* -------- TARJETA DE ESCENA -------- */
+    .escena-card {
+      background: var(--color-bg-card);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 200px;
+    }
+
+    /* Panel izquierdo: frame visual */
+    .escena-frame {
+      background: linear-gradient(145deg, #EDE8DD 0%, #E0D9CC 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 20px;
+      gap: 16px;
+      position: relative;
+      border-right: 1.5px solid var(--color-border);
+    }
+
+    .escena-numero {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--color-badge-bg);
+      color: var(--color-badge-text);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      padding: 5px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .escena-tiempo {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 20px;
+    }
+
+    .frame-ilustracion {
+      width: 100px;
+      height: 100px;
+    }
+
+    .frame-tipo {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* Panel derecho: datos de escena */
+    .escena-datos {
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .escena-datos .texto-pantalla {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: bold;
+      color: var(--color-navy);
+      line-height: 1.25;
+    }
+
+    .escena-datos .texto-pantalla::before {
+      content: '"';
+      color: var(--color-accent-soft);
+      font-size: 36px;
+      line-height: 0;
+      vertical-align: -10px;
+      margin-right: 2px;
+    }
+
+    .escena-datos .texto-pantalla::after {
+      content: '"';
+      color: var(--color-accent-soft);
+      font-size: 36px;
+      line-height: 0;
+      vertical-align: -10px;
+      margin-left: 2px;
+    }
+
+    .escena-detalles {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .detalle-fila {
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+    }
+
+    .detalle-etiqueta {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      min-width: 100px;
+      flex-shrink: 0;
+    }
+
+    .detalle-valor {
+      font-size: 15px;
+      color: var(--color-navy-light);
+      line-height: 1.5;
+    }
+
+    .detalle-valor strong {
+      color: var(--color-navy);
+      font-weight: 700;
+    }
+
+    /* Tags de producto */
+    .productos-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      background: rgba(26, 54, 93, 0.07);
+      border: 1px solid rgba(26, 54, 93, 0.15);
+      color: var(--color-navy);
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .tag.tag-destacado {
+      background: rgba(196, 164, 74, 0.15);
+      border-color: rgba(196, 164, 74, 0.4);
+      color: var(--color-accent);
+    }
+
+    /* -------- SECCIÓN AUDIO -------- */
+    .audio-section {
+      margin-top: 44px;
+      background: var(--color-navy);
+      border-radius: var(--radius-card);
+      padding: 36px 40px;
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    .audio-icon {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+    }
+
+    .audio-info {
+      flex: 1;
+    }
+
+    .audio-info h3 {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: bold;
+      color: #F5F0E8;
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    .audio-info p {
+      font-size: 15px;
+      color: rgba(245, 240, 232, 0.75);
+      line-height: 1.7;
+    }
+
+    .audio-info .audio-tag {
+      display: inline-block;
+      margin-top: 14px;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      padding: 6px 18px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    /* -------- FOOTER DEL DOC -------- */
+    .doc-footer {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1.5px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .doc-footer .footer-marca {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--color-accent);
+      letter-spacing: 0.15em;
+    }
+
+    .doc-footer .footer-meta {
+      font-size: 13px;
+      color: var(--color-muted);
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    /* -------- INSTRUCCIONES DE EDICIÓN -------- */
+    .instrucciones-box {
+      margin-top: 28px;
+      background: rgba(26, 54, 93, 0.04);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 28px 32px;
+    }
+
+    .instrucciones-box h3 {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: bold;
+      color: var(--color-navy);
+      margin-bottom: 14px;
+    }
+
+    .instrucciones-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .instrucciones-box li {
+      font-size: 14px;
+      color: var(--color-navy-light);
+      line-height: 1.5;
+      padding-left: 22px;
+      position: relative;
+    }
+
+    .instrucciones-box li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 7px;
+      height: 7px;
+      background: var(--color-accent-soft);
+      border-radius: 50%;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABECERA DEL DOCUMENTO -->
+  <header class="doc-header">
+    <p class="marca">Ivital Salud Integral</p>
+    <h1>Guión Reel: Superalimentos</h1>
+    <p class="meta">
+      Duracion total: <span>18 segundos</span> &nbsp;|&nbsp;
+      Formato: <span>9:16 vertical (1080x1920)</span> &nbsp;|&nbsp;
+      Publicacion: <span>@ivitalsaludintegral</span>
+    </p>
+  </header>
+
+  <!-- SPECS TECNICAS -->
+  <div class="specs-row" role="list" aria-label="Especificaciones tecnicas">
+    <div class="spec-chip" role="listitem"><strong>Duracion:</strong> 18 s</div>
+    <div class="spec-chip" role="listitem"><strong>Formato:</strong> 1080 x 1920 px</div>
+    <div class="spec-chip" role="listitem"><strong>Relacion:</strong> 9:16</div>
+    <div class="spec-chip" role="listitem"><strong>Escenas:</strong> 6</div>
+    <div class="spec-chip" role="listitem"><strong>Cada escena:</strong> 3 s</div>
+    <div class="spec-chip" role="listitem"><strong>Audio:</strong> Musica + voz off opcional</div>
+  </div>
+
+  <!-- ESCENAS -->
+  <main class="escenas-grid" aria-label="Storyboard del reel">
+
+    <!-- ESCENA 1 -->
+    <article class="escena-card" aria-label="Escena 1">
+      <div class="escena-frame">
+        <span class="escena-numero">ESC 01</span>
+        <span class="escena-tiempo">0 – 3 s</span>
+
+        <!-- Ilustracion SVG: zona tienda / estantes -->
+        <svg class="frame-ilustracion" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Estante superior -->
+          <rect x="8" y="30" width="84" height="7" rx="2" fill="#1a365d" opacity="0.2"/>
+          <!-- Estante inferior -->
+          <rect x="8" y="62" width="84" height="7" rx="2" fill="#1a365d" opacity="0.2"/>
+          <!-- Botes / productos en estante superior -->
+          <rect x="16" y="18" width="14" height="12" rx="2" fill="#C4A44A" opacity="0.7"/>
+          <rect x="34" y="16" width="12" height="14" rx="2" fill="#1a365d" opacity="0.5"/>
+          <rect x="50" y="19" width="10" height="11" rx="2" fill="#8B6914" opacity="0.6"/>
+          <rect x="64" y="17" width="13" height="13" rx="2" fill="#2a4a7f" opacity="0.5"/>
+          <!-- Botes en estante inferior -->
+          <rect x="16" y="49" width="12" height="13" rx="2" fill="#C4A44A" opacity="0.5"/>
+          <rect x="32" y="48" width="14" height="14" rx="2" fill="#1a365d" opacity="0.4"/>
+          <rect x="50" y="50" width="11" height="12" rx="2" fill="#8B6914" opacity="0.5"/>
+          <rect x="65" y="48" width="12" height="14" rx="2" fill="#2a4a7f" opacity="0.4"/>
+          <!-- Suelo -->
+          <rect x="0" y="90" width="100" height="4" rx="1" fill="#1a365d" opacity="0.1"/>
+          <!-- Icono camara angulo plano -->
+          <circle cx="50" cy="80" r="8" fill="none" stroke="#8B6914" stroke-width="1.5" opacity="0.6"/>
+          <circle cx="50" cy="80" r="3" fill="#8B6914" opacity="0.5"/>
+        </svg>
+
+        <p class="frame-tipo">Plano general<br>Zona superalimentos</p>
+      </div>
+
+      <div class="escena-datos">
+        <p class="texto-pantalla">Sigues desayunando lo mismo?</p>
+        <div class="escena-detalles">
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Plano</span>
+            <span class="detalle-valor"><strong>Plano general</strong> de la zona de superalimentos. Camara lenta o barrido suave de izquierda a derecha.</span>
+          </div>
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Productos</span>
+            <span class="detalle-valor">Vista global de los lineales. Be Levels y superalimentos al fondo.</span>
+          </div>
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Texto</span>
+            <span class="detalle-valor">Centrado, fuente grande, entrada con fade-in suave.</span>
+          </div>
+        </div>
+        <div class="productos-tags" aria-label="Productos en pantalla">
+          <span class="tag">Vista general tienda</span>
+          <span class="tag">Zona superalimentos</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ESCENA 2 -->
+    <article class="escena-card" aria-label="Escena 2">
+      <div class="escena-frame">
+        <span class="escena-numero">ESC 02</span>
+        <span class="escena-tiempo">3 – 6 s</span>
+
+        <!-- Ilustracion SVG: taza curcuma latte -->
+        <svg class="frame-ilustracion" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Vapor -->
+          <path d="M36 28 Q33 20 36 13 Q39 6 36 0" stroke="#C4A44A" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+          <path d="M50 25 Q47 17 50 10 Q53 3 50 -3" stroke="#C4A44A" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <path d="M64 28 Q61 20 64 13 Q67 6 64 0" stroke="#C4A44A" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+          <!-- Taza body -->
+          <rect x="18" y="34" width="64" height="48" rx="8" fill="rgba(196,164,74,0.15)" stroke="#1a365d" stroke-width="2"/>
+          <!-- Contenido dorado -->
+          <rect x="24" y="40" width="52" height="35" rx="5" fill="rgba(196,164,74,0.35)"/>
+          <!-- Espiral curcuma -->
+          <path d="M50 57 Q58 50 50 47 Q42 44 42 52 Q42 60 52 60" stroke="#8B6914" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- Asa -->
+          <path d="M82 42 Q96 42 96 58 Q96 74 82 74" stroke="#1a365d" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <!-- Plato -->
+          <ellipse cx="50" cy="85" rx="40" ry="7" fill="rgba(26,54,93,0.08)" stroke="#1a365d" stroke-width="1.5"/>
+          <!-- Bote Baia detras -->
+          <rect x="72" y="50" width="16" height="28" rx="3" fill="rgba(26,54,93,0.2)" stroke="#1a365d" stroke-width="1"/>
+          <rect x="74" y="60" width="12" height="5" rx="1" fill="rgba(196,164,74,0.5)"/>
+        </svg>
+
+        <p class="frame-tipo">Close-up<br>Curcuma Latte Baia</p>
+      </div>
+
+      <div class="escena-datos">
+        <p class="texto-pantalla">Curcuma Latte: antiinflamatorio natural</p>
+        <div class="escena-detalles">
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Plano</span>
+            <span class="detalle-valor"><strong>Close-up</strong> del bote de Curcuma Latte Baia junto a una taza preparada. Luz calida lateral.</span>
+          </div>
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Accion</span>
+            <span class="detalle-valor">Mostrar el bote en mano, girarlo para ver etiqueta. Taza humante en primer plano opcional.</span>
+          </div>
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Beneficio</span>
+            <span class="detalle-valor">Resaltar visualmente el color dorado del polvo o la bebida.</span>
+          </div>
+        </div>
+        <div class="productos-tags">
+          <span class="tag tag-destacado">Curcuma Latte – Baia Food</span>
+          <span class="tag">Antiinflamatorio</span>
+          <span class="tag">Sin gluten</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ESCENA 3 -->
+    <article class="escena-card" aria-label="Escena 3">
+      <div class="escena-frame">
+        <span class="escena-numero">ESC 03</span>
+        <span class="escena-tiempo">6 – 9 s</span>
+
+        <!-- Ilustracion SVG: bote energy creamer + rayo de energia -->
+        <svg class="frame-ilustracion" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Bote cilindrico -->
+          <rect x="28" y="25" width="44" height="60" rx="6" fill="rgba(26,54,93,0.12)" stroke="#1a365d" stroke-width="2"/>
+          <rect x="24" y="25" width="52" height="10" rx="4" fill="rgba(26,54,93,0.25)"/>
+          <rect x="24" y="75" width="52" height="10" rx="4" fill="rgba(26,54,93,0.2)"/>
+          <!-- Etiqueta central -->
+          <rect x="31" y="38" width="38" height="30" rx="3" fill="rgba(196,164,74,0.25)" stroke="rgba(196,164,74,0.5)" stroke-width="1"/>
+          <!-- Texto ficticio en etiqueta -->
+          <rect x="35" y="44" width="28" height="3" rx="1" fill="rgba(26,54,93,0.3)"/>
+          <rect x="38" y="50" width="22" height="2" rx="1" fill="rgba(26,54,93,0.2)"/>
+          <rect x="36" y="55" width="26" height="2" rx="1" fill="rgba(26,54,93,0.2)"/>
+          <!-- Rayo de energia -->
+          <path d="M74 30 L82 50 L76 50 L86 72 L62 48 L70 48 Z" fill="rgba(196,164,74,0.7)" stroke="#8B6914" stroke-width="1"/>
+          <!-- Circulo energetico -->
+          <circle cx="80" cy="50" r="14" stroke="rgba(196,164,74,0.3)" stroke-width="1.5" fill="none"/>
+          <!-- L-Theanine icono: hoja -->
+          <path d="M14 65 Q14 45 28 45 Q22 55 24 65 Q19 67 14 65" fill="rgba(42,74,127,0.3)" stroke="#2a4a7f" stroke-width="1"/>
+          <path d="M14 65 Q20 58 28 45" stroke="#2a4a7f" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+
+        <p class="frame-tipo">Plano detalle<br>Energy Creamer</p>
+      </div>
+
+      <div class="escena-datos">
+        <p class="texto-pantalla">Energy Creamer con L-Theanine: foco sin ansiedad</p>
+        <div class="escena-detalles">
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Plano</span>
+            <span class="detalle-valor"><strong>Plano detalle</strong> del bote de Energy Creamer. Mostrar ingredientes clave en etiqueta si es posible.</span>
+          </div>
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Accion</span>
+            <span class="detalle-valor">Vertido del polvo en una taza o cuchara cargada. Movimiento lento y visual.</span>
+          </div>
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Mensaje</span>
+            <span class="detalle-valor">La L-Theanine combina energia + calma. Diferenciador clave respecto al cafe.</span>
+          </div>
+        </div>
+        <div class="productos-tags">
+          <span class="tag tag-destacado">Energy Creamer L-Theanine</span>
+          <span class="tag">Nootropico</span>
+          <span class="tag">Foco mental</span>
+          <span class="tag">Sin pico de cortisol</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ESCENA 4 -->
+    <article class="escena-card" aria-label="Escena 4">
+      <div class="escena-frame">
+        <span class="escena-numero">ESC 04</span>
+        <span class="escena-tiempo">9 – 12 s</span>
+
+        <!-- Ilustracion SVG: bol de granola -->
+        <svg class="frame-ilustracion" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Bol -->
+          <path d="M10 48 Q10 80 50 80 Q90 80 90 48" fill="rgba(196,164,74,0.2)" stroke="#1a365d" stroke-width="2"/>
+          <ellipse cx="50" cy="48" rx="40" ry="12" fill="rgba(196,164,74,0.3)" stroke="#1a365d" stroke-width="2"/>
+          <!-- Granola clusters arriba del bol -->
+          <circle cx="38" cy="42" r="5" fill="rgba(139,105,20,0.5)"/>
+          <circle cx="48" cy="39" r="6" fill="rgba(196,164,74,0.6)"/>
+          <circle cx="59" cy="41" r="5" fill="rgba(139,105,20,0.4)"/>
+          <circle cx="43" cy="46" r="4" fill="rgba(196,164,74,0.4)"/>
+          <circle cx="55" cy="46" r="4" fill="rgba(139,105,20,0.5)"/>
+          <!-- Frutas / semillas -->
+          <circle cx="35" cy="46" r="3" fill="rgba(220,50,50,0.4)"/>
+          <circle cx="62" cy="43" r="3" fill="rgba(220,50,50,0.35)"/>
+          <!-- Bolsa granola Rawgorilla -->
+          <rect x="68" y="15" width="24" height="32" rx="4" fill="rgba(26,54,93,0.15)" stroke="#1a365d" stroke-width="1.5"/>
+          <rect x="70" y="22" width="20" height="8" rx="2" fill="rgba(26,54,93,0.3)"/>
+          <rect x="72" y="33" width="16" height="2" rx="1" fill="rgba(196,164,74,0.5)"/>
+          <!-- Bolsa granola SaludViva -->
+          <rect x="8" y="18" width="22" height="30" rx="4" fill="rgba(42,74,127,0.15)" stroke="#2a4a7f" stroke-width="1.5"/>
+          <rect x="10" y="24" width="18" height="8" rx="2" fill="rgba(42,74,127,0.3)"/>
+          <!-- Hoja organico -->
+          <path d="M50 12 Q50 4 58 4 Q54 8 55 12 Q52.5 13 50 12" fill="rgba(42,74,127,0.4)"/>
+        </svg>
+
+        <p class="frame-tipo">Plano cenital<br>Granolas organicas</p>
+      </div>
+
+      <div class="escena-datos">
+        <p class="texto-pantalla">Granolas raw y organicas</p>
+        <div class="escena-detalles">
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Plano</span>
+            <span class="detalle-valor"><strong>Cenital o 45 grados</strong> sobre los paquetes de granola junto a un bol servido. Estilismo minimalista.</span>
+          </div>
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Accion</span>
+            <span class="detalle-valor">Mostrar ambas granolas (SaludViva y Rawgorilla Chocolate). Colocar botes en paralelo para comparacion visual.</span>
+          </div>
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Estilismo</span>
+            <span class="detalle-valor">Superficie neutra beige o madera clara. Fruta seca o algun ingrediente visible.</span>
+          </div>
+        </div>
+        <div class="productos-tags">
+          <span class="tag tag-destacado">Granola organica SaludViva</span>
+          <span class="tag tag-destacado">Chocolate Granola Rawgorilla</span>
+          <span class="tag">Raw</span>
+          <span class="tag">Sin gluten</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ESCENA 5 -->
+    <article class="escena-card" aria-label="Escena 5">
+      <div class="escena-frame">
+        <span class="escena-numero">ESC 05</span>
+        <span class="escena-tiempo">12 – 15 s</span>
+
+        <!-- Ilustracion SVG: productos Be Levels -->
+        <svg class="frame-ilustracion" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Botes Be Levels estilo premium -->
+          <rect x="12" y="30" width="22" height="50" rx="5" fill="rgba(26,54,93,0.15)" stroke="#1a365d" stroke-width="2"/>
+          <rect x="13" y="30" width="22" height="12" rx="4" fill="rgba(26,54,93,0.35)"/>
+          <rect x="15" y="46" width="18" height="2" rx="1" fill="rgba(26,54,93,0.3)"/>
+          <rect x="15" y="51" width="14" height="1.5" rx="1" fill="rgba(26,54,93,0.2)"/>
+          <!-- Logotipo B simplificado -->
+          <text x="17" y="43" font-family="serif" font-size="10" font-weight="bold" fill="rgba(26,54,93,0.6)">BL</text>
+
+          <rect x="39" y="24" width="22" height="56" rx="5" fill="rgba(42,74,127,0.15)" stroke="#2a4a7f" stroke-width="2"/>
+          <rect x="40" y="24" width="22" height="12" rx="4" fill="rgba(42,74,127,0.4)"/>
+          <rect x="42" y="40" width="18" height="2" rx="1" fill="rgba(42,74,127,0.3)"/>
+          <text x="44" y="37" font-family="serif" font-size="10" font-weight="bold" fill="rgba(42,74,127,0.7)">BL</text>
+
+          <rect x="66" y="32" width="20" height="48" rx="5" fill="rgba(139,105,20,0.15)" stroke="#8B6914" stroke-width="2"/>
+          <rect x="67" y="32" width="20" height="12" rx="4" fill="rgba(139,105,20,0.35)"/>
+          <text x="71" y="45" font-family="serif" font-size="10" font-weight="bold" fill="rgba(139,105,20,0.6)">BL</text>
+
+          <!-- Plant Protein packaging -->
+          <rect x="30" y="62" width="40" height="18" rx="3" fill="rgba(196,164,74,0.3)" stroke="#8B6914" stroke-width="1"/>
+          <rect x="33" y="66" width="34" height="4" rx="1" fill="rgba(26,54,93,0.2)"/>
+          <rect x="37" y="72" width="26" height="2" rx="1" fill="rgba(26,54,93,0.15)"/>
+
+          <!-- Estrellas nutricion -->
+          <circle cx="88" cy="20" r="8" fill="rgba(196,164,74,0.2)" stroke="#C4A44A" stroke-width="1"/>
+          <path d="M88 14 L89.5 17.5 L93 18 L90.5 20.5 L91 24 L88 22 L85 24 L85.5 20.5 L83 18 L86.5 17.5Z" fill="#C4A44A" opacity="0.6"/>
+        </svg>
+
+        <p class="frame-tipo">Plano medio<br>Be Levels + Protein</p>
+      </div>
+
+      <div class="escena-datos">
+        <p class="texto-pantalla">Nutricion funcional de verdad</p>
+        <div class="escena-detalles">
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Plano</span>
+            <span class="detalle-valor"><strong>Plano medio</strong> de la zona Be Levels. Mostrar variedad de gamas en conjunto.</span>
+          </div>
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Accion</span>
+            <span class="detalle-valor">Mano que coloca o coge un bote. Mostrar tambien Plant Protein. Movimiento de picking del producto.</span>
+          </div>
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Mensaje</span>
+            <span class="detalle-valor">Comunicar profundidad de gama: no es una tienda, es una seleccion curada.</span>
+          </div>
+        </div>
+        <div class="productos-tags">
+          <span class="tag tag-destacado">Be Levels (gama)</span>
+          <span class="tag tag-destacado">Plant Protein</span>
+          <span class="tag">Nutricion funcional</span>
+          <span class="tag">Calidad premium</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ESCENA 6 -->
+    <article class="escena-card" aria-label="Escena 6">
+      <div class="escena-frame">
+        <span class="escena-numero">ESC 06</span>
+        <span class="escena-tiempo">15 – 18 s</span>
+
+        <!-- Ilustracion SVG: exterior / fachada tienda -->
+        <svg class="frame-ilustracion" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Edificio -->
+          <rect x="15" y="35" width="70" height="55" rx="2" fill="rgba(245,240,232,0.9)" stroke="#1a365d" stroke-width="2"/>
+          <!-- Tejado / fronton -->
+          <path d="M10 35 L50 12 L90 35Z" fill="rgba(26,54,93,0.15)" stroke="#1a365d" stroke-width="2"/>
+          <!-- Puerta -->
+          <rect x="40" y="68" width="20" height="22" rx="2" fill="rgba(26,54,93,0.25)" stroke="#1a365d" stroke-width="1.5"/>
+          <circle cx="57" cy="79" r="2" fill="#C4A44A"/>
+          <!-- Ventana izq -->
+          <rect x="20" y="50" width="18" height="14" rx="2" fill="rgba(196,164,74,0.3)" stroke="#1a365d" stroke-width="1.5"/>
+          <line x1="29" y1="50" x2="29" y2="64" stroke="#1a365d" stroke-width="0.8" opacity="0.5"/>
+          <line x1="20" y1="57" x2="38" y2="57" stroke="#1a365d" stroke-width="0.8" opacity="0.5"/>
+          <!-- Ventana dcha -->
+          <rect x="62" y="50" width="18" height="14" rx="2" fill="rgba(196,164,74,0.3)" stroke="#1a365d" stroke-width="1.5"/>
+          <line x1="71" y1="50" x2="71" y2="64" stroke="#1a365d" stroke-width="0.8" opacity="0.5"/>
+          <line x1="62" y1="57" x2="80" y2="57" stroke="#1a365d" stroke-width="0.8" opacity="0.5"/>
+          <!-- Cartel ivital -->
+          <rect x="28" y="38" width="44" height="10" rx="2" fill="#1a365d"/>
+          <text x="50" y="46" text-anchor="middle" font-family="serif" font-size="7" font-weight="bold" fill="#C4A44A">IVITAL</text>
+          <!-- Sol / destellos en esquina -->
+          <circle cx="82" cy="20" r="8" fill="rgba(196,164,74,0.25)"/>
+          <line x1="82" y1="8"  x2="82" y2="5"  stroke="#C4A44A" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="90" y1="12" x2="92" y2="10" stroke="#C4A44A" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="94" y1="20" x2="97" y2="20" stroke="#C4A44A" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Suelo -->
+          <rect x="0" y="90" width="100" height="5" rx="0" fill="rgba(26,54,93,0.08)"/>
+          <!-- Planta decorativa -->
+          <rect x="8" y="80" width="4" height="10" rx="1" fill="rgba(26,54,93,0.2)"/>
+          <ellipse cx="10" cy="76" rx="7" ry="5" fill="rgba(42,74,127,0.25)"/>
+        </svg>
+
+        <p class="frame-tipo">Vista exterior<br>Llamada a la accion</p>
+      </div>
+
+      <div class="escena-datos">
+        <p class="texto-pantalla">Todo esto en ivital</p>
+        <div class="escena-detalles">
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Plano</span>
+            <span class="detalle-valor"><strong>Vista general</strong> de la tienda o la zona completa de superalimentos. Plano de cierre amplio y luminoso.</span>
+          </div>
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Texto</span>
+            <span class="detalle-valor">"Todo esto en ivital" en grande + direccion o barrio en texto secundario. Incluir icono de ubicacion.</span>
+          </div>
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">CTA</span>
+            <span class="detalle-valor">Superponer @ivitalsaludintegral + "Visita nuestra tienda" o "Link en bio". Fade out elegante al final.</span>
+          </div>
+          <div class="detalle-fila">
+            <span class="detalle-etiqueta">Overlay</span>
+            <span class="detalle-valor">Sello / watermark de marca en esquina inferior. Gradiente sutil de cierre.</span>
+          </div>
+        </div>
+        <div class="productos-tags">
+          <span class="tag">Vista general</span>
+          <span class="tag tag-destacado">@ivitalsaludintegral</span>
+          <span class="tag">Llamada a la accion</span>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- SECCION AUDIO -->
+  <section class="audio-section" aria-label="Indicaciones de audio">
+    <svg class="audio-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="28" cy="28" r="27" stroke="rgba(245,240,232,0.2)" stroke-width="1.5"/>
+      <path d="M20 20 L20 36 L30 36 L38 44 L38 12 L30 20 Z" fill="rgba(196,164,74,0.5)" stroke="#C4A44A" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M42 18 Q50 28 42 38" stroke="#C4A44A" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M46 13 Q58 28 46 43" stroke="rgba(196,164,74,0.4)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </svg>
+    <div class="audio-info">
+      <h3>Audio sugerido</h3>
+      <p>
+        Musica energetica positiva, ritmo medio-alto que transmita vitalidad sin ser agresiva.<br>
+        Generos ideales: pop instrumental optimista, acoustic upbeat, indie positivo.<br>
+        Buscar en: <strong style="color: #C4A44A;">Instagram Audio Library</strong> o <strong style="color: #C4A44A;">Epidemic Sound</strong> — filtrar por "upbeat", "morning", "health".<br>
+        Voz en off opcional para escenas 2–5 si el reel se presenta como tutorial breve.
+      </p>
+      <span class="audio-tag">Sin derechos de autor</span>
+    </div>
+  </section>
+
+  <!-- NOTAS DE PRODUCCION -->
+  <div class="instrucciones-box" role="note" aria-label="Notas de produccion">
+    <h3>Notas de produccion y edicion</h3>
+    <ul>
+      <li>Grabar en horizontal si es posible y recortar a 9:16, o directamente en vertical con el movil en modo portrait.</li>
+      <li>Iluminacion natural siempre preferible. Hora dorada matutina refuerza la estetica de desayuno saludable.</li>
+      <li>Usar transiciones de corte directo o deslizamiento suave. Evitar efectos bruscos que rompan el ritmo.</li>
+      <li>Tipografia en pantalla: usar fuente serif bold para titulos (coherente con la marca) sobre fondo semitransparente si hay video de fondo.</li>
+      <li>Paleta de colores en edicion: tonos calidos, beige y dorado. Evitar filtros frios o desaturados.</li>
+      <li>Ultima escena: incluir siempre el handle @ivitalsaludintegral visible al menos 2 segundos antes del corte final.</li>
+      <li>Hashtags sugeridos para el pie del post: #superalimentos #saludintegral #herbolario #curcumalatte #nutricionfuncional #BeautyFromWithin #ivital</li>
+    </ul>
+  </div>
+
+  <!-- PIE DEL DOCUMENTO -->
+  <footer class="doc-footer" role="contentinfo">
+    <div>
+      <p class="footer-marca">Ivital Salud Integral</p>
+    </div>
+    <div class="footer-meta">
+      <p>Reel 02 – Superalimentos</p>
+      <p>Documento de produccion interna</p>
+    </div>
+  </footer>
+
+</body>
+</html>

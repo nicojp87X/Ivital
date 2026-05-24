@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>Mieles Yogé – Slide 3 – Miel de Jamaica</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cream-light: #F5F0E8;
+      --cream-dark: #EDE8DD;
+      --navy: #1a365d;
+      --navy-light: #2a4a7f;
+      --gold: #C8922A;
+      --gold-light: #E8B84B;
+      --hibiscus: #A63248;
+      --hibiscus-light: #C94060;
+      --hibiscus-pale: #FBF0F2;
+      --hibiscus-border: rgba(166, 50, 72, 0.2);
+      --text-secondary: #4a5568;
+    }
+
+    html, body {
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+    }
+
+    body {
+      background: linear-gradient(145deg, var(--cream-light) 0%, var(--cream-dark) 100%);
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex;
+      align-items: stretch;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse at 70% 20%, rgba(166, 50, 72, 0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 25% 85%, rgba(201, 64, 96, 0.04) 0%, transparent 45%);
+      pointer-events: none;
+    }
+
+    /* Panel derecho – visual (invierte el layout respecto al slide 2) */
+    .panel-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 72px 48px 72px 80px;
+      border-right: 1px solid var(--hibiscus-border);
+    }
+
+    .brand-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--hibiscus);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-tag::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--hibiscus);
+    }
+
+    h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 55px;
+      font-weight: bold;
+      color: var(--navy);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+
+    .variety-name {
+      font-family: Georgia, serif;
+      font-size: 17px;
+      font-style: italic;
+      color: var(--hibiscus);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    .description {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin-bottom: 44px;
+      max-width: 380px;
+    }
+
+    .divider-line {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--hibiscus-light), var(--hibiscus));
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    .benefits-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--navy);
+      opacity: 0.5;
+      margin-bottom: 20px;
+    }
+
+    .benefits-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .benefit-pill {
+      background: var(--hibiscus-pale);
+      border: 1px solid var(--hibiscus-border);
+      border-radius: 100px;
+      padding: 10px 20px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .benefit-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--hibiscus);
+      flex-shrink: 0;
+    }
+
+    /* Panel visual con el tarro de Jamaica */
+    .panel-visual {
+      width: 420px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 72px 56px;
+      position: relative;
+    }
+
+    .jar-wrapper {
+      position: relative;
+      width: 220px;
+      height: 260px;
+      margin-bottom: 40px;
+    }
+
+    .jar-glow {
+      position: absolute;
+      inset: -30px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(201, 64, 96, 0.18) 0%, transparent 70%);
+    }
+
+    .jar-body {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 160px;
+      height: 200px;
+      background: linear-gradient(160deg, #D9607A 0%, #A63248 45%, #7A2035 100%);
+      border-radius: 16px 16px 24px 24px;
+      box-shadow:
+        inset -8px 0 20px rgba(0,0,0,0.1),
+        inset 8px 0 20px rgba(255,255,255,0.1),
+        0 12px 40px rgba(166, 50, 72, 0.28);
+    }
+
+    .jar-neck {
+      position: absolute;
+      bottom: 196px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 108px;
+      height: 36px;
+      background: linear-gradient(160deg, #C94060 0%, #8B2840 100%);
+      border-radius: 6px 6px 0 0;
+    }
+
+    .jar-lid {
+      position: absolute;
+      bottom: 228px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 124px;
+      height: 20px;
+      background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%);
+      border-radius: 4px 4px 0 0;
+    }
+
+    .jar-label {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 80px;
+      background: rgba(255,255,255,0.88);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .jar-label-title {
+      font-family: Georgia, serif;
+      font-size: 10px;
+      font-weight: bold;
+      color: var(--navy);
+      letter-spacing: 0.08em;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .jar-label-sub {
+      font-size: 8px;
+      color: var(--hibiscus);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* Flor de hibisco decorativa (CSS puro) */
+    .hibiscus-deco {
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+
+    .petal {
+      position: absolute;
+      width: 28px;
+      height: 44px;
+      background: linear-gradient(180deg, rgba(201, 64, 96, 0.55) 0%, rgba(166, 50, 72, 0.3) 100%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      top: 50%;
+      left: 50%;
+      transform-origin: bottom center;
+    }
+    .petal:nth-child(1) { transform: translate(-50%, -100%) rotate(0deg); }
+    .petal:nth-child(2) { transform: translate(-50%, -100%) rotate(72deg); }
+    .petal:nth-child(3) { transform: translate(-50%, -100%) rotate(144deg); }
+    .petal:nth-child(4) { transform: translate(-50%, -100%) rotate(216deg); }
+    .petal:nth-child(5) { transform: translate(-50%, -100%) rotate(288deg); }
+
+    .hibiscus-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.8);
+    }
+
+    .float-dot {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--hibiscus-light);
+      opacity: 0.2;
+    }
+    .float-dot--1 { width: 10px; height: 10px; top: 88px; left: 60px; }
+    .float-dot--2 { width: 6px; height: 6px; top: 160px; right: 56px; opacity: 0.15; }
+    .float-dot--3 { width: 14px; height: 14px; bottom: 120px; left: 48px; opacity: 0.18; }
+
+    .slide-number {
+      position: absolute;
+      bottom: 72px;
+      font-family: Georgia, serif;
+      font-size: 13px;
+      color: var(--text-secondary);
+      opacity: 0.4;
+      letter-spacing: 0.1em;
+    }
+
+    /* Celdas de panal */
+    .honeycomb-deco {
+      position: absolute;
+      bottom: 80px;
+      left: 72px;
+      display: grid;
+      grid-template-columns: repeat(4, 14px);
+      gap: 5px;
+      opacity: 0.12;
+    }
+    .honeycomb-deco span {
+      display: block;
+      width: 14px;
+      height: 14px;
+      background: var(--navy);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+    .honeycomb-deco span:nth-child(odd) {
+      transform: translateY(9px);
+    }
+
+    .footer-tagline {
+      position: absolute;
+      bottom: 52px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: Georgia, serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--navy);
+      opacity: 0.3;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="panel-content">
+    <p class="brand-tag">Yogé Remedios Ancestrales</p>
+
+    <h2>Miel de<br>Jamaica</h2>
+    <p class="variety-name">Hibiscus Honey 🌺</p>
+
+    <div class="divider-line"></div>
+
+    <p class="description">
+      La delicada flor de Jamaica infusionada en miel pura artesanal.
+      Un elixir de color rubí con propiedades excepcionales para tu bienestar.
+    </p>
+
+    <p class="benefits-label">Sus beneficios</p>
+
+    <ul class="benefits-list">
+      <li class="benefit-item">
+        <div class="benefit-pill">
+          <span class="benefit-dot" aria-hidden="true"></span>
+          Regula la tensión arterial
+        </div>
+      </li>
+      <li class="benefit-item">
+        <div class="benefit-pill">
+          <span class="benefit-dot" aria-hidden="true"></span>
+          Alto poder antioxidante
+        </div>
+      </li>
+      <li class="benefit-item">
+        <div class="benefit-pill">
+          <span class="benefit-dot" aria-hidden="true"></span>
+          Refrescante y digestiva
+        </div>
+      </li>
+    </ul>
+  </main>
+
+  <aside class="panel-visual" aria-hidden="true">
+
+    <div class="jar-wrapper">
+      <div class="jar-glow"></div>
+      <div class="jar-lid"></div>
+      <div class="jar-neck"></div>
+      <div class="jar-body">
+        <div class="jar-label">
+          <span class="jar-label-title">Miel de<br>Jamaica</span>
+          <span class="jar-label-sub">Yogé</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hibiscus-deco" role="presentation">
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="hibiscus-center"></div>
+    </div>
+
+    <div class="float-dot float-dot--1"></div>
+    <div class="float-dot float-dot--2"></div>
+    <div class="float-dot float-dot--3"></div>
+
+    <div class="honeycomb-deco" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <span class="slide-number">03 / 04</span>
+  </aside>
+
+  <p class="footer-tagline">Cuídate desde dentro</p>
+
+</body>
+</html>
