@@ -67,3 +67,16 @@ historial_*.docx
 # Zips de deploy
 ivital-web.zip
 deploy.zip
+
+# Imágenes brutas (no versionar fotos originales grandes)
+Fotos/
+Publicaciones_pendientes/fotos/originales_productos/
+Publicaciones_pendientes/fotos/originales_tienda/
+Landing/images/_debug.jpg
+Landing/images/_logo_test*.png
+Landing/images/_preview_*.jpg
+Landing/reference/
+
+# Builds locales
+*.zip
+*.tar.gz

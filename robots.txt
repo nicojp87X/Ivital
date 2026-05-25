@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /Publicaciones_pendientes/
+Disallow: /Fotos/
+Disallow: /reference/
+
+Sitemap: https://ivital.es/sitemap.xml
