@@ -173,9 +173,9 @@
   .serv-body ul{margin-bottom:1.5rem}
   .btn-serv:hover{background:var(--azul-osc);color:#fff}
   .serv-card--wide{flex-direction:row;margin-top:1.8rem;border-top:4px solid var(--granate)}
-  .serv-card--wide .serv-head{flex:0 0 40%;height:auto;min-height:340px;display:block}
+  .serv-card--wide .serv-head{flex:0 0 40%;height:auto;min-height:340px;background:#EDE3D1;display:flex;align-items:center;justify-content:center}
   .serv-card--wide .serv-head::after{display:none}
-  .serv-card--wide .serv-head img{position:absolute;inset:0;object-position:top}
+  .tierra-symbol{width:100%;height:100%;max-height:320px;display:block}
   .serv-card--wide .serv-body{justify-content:center;padding:2.5rem 2.5rem}
   .serv-card--wide h3{font-size:1.9rem}
   .serv-sub{color:var(--granate);font-weight:600;font-size:1.15rem;margin-bottom:.6rem}
@@ -251,7 +251,8 @@
     .pilares-grid{grid-template-columns:repeat(2,1fr)}
     .serv-grid,.testi-grid{grid-template-columns:1fr}
     .serv-card--wide{flex-direction:column}
-    .serv-card--wide .serv-head{flex:none;min-height:0;height:auto;aspect-ratio:1280/1000}
+    .serv-card--wide .serv-head{flex:none;min-height:0;height:220px}
+    .tierra-symbol{max-height:220px}
     .serv-card--wide .serv-body{padding:2rem 1.8rem}
     .btn-tierra{align-self:stretch;text-align:center}
     .foot-grid{grid-template-columns:1fr 1fr;gap:2rem}
@@ -362,7 +363,14 @@
       <div class="serv-card"><div class="serv-head"><img src="images/espacio-07.webp" alt="Hidroterapia de colon en Ivital" loading="lazy"></div><div class="serv-body"><h3>Hidroterapia de colon</h3><p>Limpieza intestinal profunda en un entorno profesional y cuidado.</p><ul><li>Técnica suave y segura</li><li>Atención profesional cercana</li><li>Acompañamiento antes y después</li><li>Complemento de tu plan integrativo</li></ul><a href="https://wa.me/34623768105?text=Hola%20buenos%20d%C3%ADas%2C%20quer%C3%ADa%20agendar%20una%20sesi%C3%B3n%20de%20hidroterapia%20y%20que%20me%20informaran." target="_blank" rel="noopener" class="btn btn-serv">Pide tu cita</a></div></div>
     </div>
     <article class="serv-card serv-card--wide" id="programa-tierra">
-      <a class="serv-head" href="programa-tierra.html" aria-label="Ver el programa TIERRA completo"><img src="images/tierra-01.webp" alt="Programa TIERRA, acompañamiento integrativo de 21 días" loading="lazy"></a>
+      <a class="serv-head" href="programa-tierra.html" aria-label="Ver el programa TIERRA completo"><svg class="tierra-symbol" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Símbolo del programa TIERRA">
+          <rect width="400" height="400" fill="#EDE3D1"/>
+          <path d="M250 260 L330 60" stroke="#2A4367" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M250 260 C 210 280, 180 330, 150 320 C 120 310, 100 350, 60 370" stroke="#2A4367" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M250 260 C 290 290, 330 330, 360 380" stroke="#2A4367" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <circle cx="150" cy="320" r="6" fill="none" stroke="#2A4367" stroke-width="2"/>
+          <circle cx="250" cy="260" r="34" fill="#8E2F3F"/>
+        </svg></a>
       <div class="serv-body">
         <h3>Programa de acompañamiento integrativo 21 días</h3>
         <p class="serv-sub">Viaje al Centro de tu Tierra</p>
