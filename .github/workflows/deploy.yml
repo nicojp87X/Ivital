@@ -15,10 +15,10 @@ jobs:
 
       - name: Validar HTML
         run: |
-          for f in index.html aviso-legal.html privacidad.html cookies.html; do
+          for f in index.html programa-tierra.html aviso-legal.html privacidad.html cookies.html .htaccess; do
             test -f "$f" || { echo "FALTA: $f"; exit 1; }
           done
-          echo "Todos los HTML presentes"
+          echo "Archivos clave presentes"
 
       - name: Deploy por FTP a Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -27,16 +27,18 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /public_html/
-          local-dir: ./
           exclude: |
             **/.git*
             **/.git*/**
-            **/node_modules/**
-            **/Fotos/**
+            **/.github/**
+            **/.netlify/**
+            **/Publicaciones/**
             **/Publicaciones_pendientes/**
+            **/Fotos/**
+            **/reference/**
             **/Landing/**
-            **/CLAUDE.md
-            **/CONTEXT.md
-            **/ideas para implementar en la web.md
-            **/README.md
-            **/.gitignore
+            **/distribucion-belevels/**
+            *.md
+            *.py
+            _redirects
+            netlify.toml

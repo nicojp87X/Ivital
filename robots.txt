@@ -1,7 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /Publicaciones/
 Disallow: /Publicaciones_pendientes/
 Disallow: /Fotos/
 Disallow: /reference/
+Disallow: /distribucion-belevels/
 
-Sitemap: https://ivital.es/sitemap.xml
+Sitemap: https://www.ivital.es/sitemap.xml
